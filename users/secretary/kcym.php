@@ -5,7 +5,7 @@ session_start();
 require("../../connection/db_connect.php");
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 2) {
-    ?>
+?>
 
     <head>
 
@@ -31,7 +31,8 @@ if ($usr_status == 2) {
                     <div class="sidebar-brand-icon rotate-n-15">
                         <!-- <i class="fas fa-laugh-wink"></i> -->
                     </div>
-                    <div class="sidebar-brand-text mx-3"><img src="/parmas/assets/img/logo.png" style="width: 78px;"> PARMAS</div>
+                    <div class="sidebar-brand-text mx-3"><img src="/parmas/assets/img/logo.png" style="width: 78px;"> PARMAS
+                    </div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
@@ -66,8 +67,7 @@ if ($usr_status == 2) {
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="/parmas/assets/img/user.png" width="40" height="40" class="rounded-circle">
                                 </a>
 
@@ -97,11 +97,9 @@ if ($usr_status == 2) {
                                     </div>
                                     <form action="#" method="post" enctype="multipart/form-data">
                                         <div class="card-body">
-                                            <h4 class="small font-weight-bold">Name : <label class="form-label error"
-                                                    id="name_error" style="font-size:medium;color:red"></label></h4>
+                                            <h4 class="small font-weight-bold">Name : <label class="form-label error" id="name_error" style="font-size:medium;color:red"></label></h4>
                                             <div class=" mb-4">
-                                                <input type="text" name="usr_name" id="usr_name" class="form-control"
-                                                    required>
+                                                <input type="text" name="usr_name" id="usr_name" class="form-control" required>
                                             </div>
                                             <h4 class="small font-weight-bold">Position : </h4>
                                             <div class=" mb-4">
@@ -118,17 +116,14 @@ if ($usr_status == 2) {
                                             </div>
                                             <h4 class="small font-weight-bold">Date : </h4>
                                             <div class=" mb-4">
-                                                <input type="date" name="date" id="datePicker" min='2023-02-01'
-                                                    class="form-control" required>
+                                                <input type="date" name="date" id="datePicker" min='2023-02-01' class="form-control" required>
                                             </div>
                                             <h4 class="small font-weight-bold">Profile : </h4>
                                             <div class=" mb-4">
-                                                <input type="file" id="profile" onchange="fileValidation()" name="profile"
-                                                    class="form-control" required>
+                                                <input type="file" id="profile" onchange="fileValidation()" name="profile" class="form-control" required>
                                             </div>
                                             <div class=" mb-4">
-                                                <input type="submit" name="subBtn" id="subBtn"
-                                                    class="form-control btn-primary" value="Submit">
+                                                <input type="submit" name="subBtn" id="subBtn" class="form-control btn-primary" value="Submit">
                                             </div>
                                         </div>
                                     </form>
@@ -160,7 +155,7 @@ if ($usr_status == 2) {
                                             $sql = "SELECT * FROM `tbl_kcym` WHERE `usr_status` = 1 ORDER BY `tbl_kcym`.`usr_position`";
                                             $result = mysqli_query($con, $sql);
                                             while ($row = mysqli_fetch_array($result)) {
-                                                ?>
+                                            ?>
                                                 <tr>
                                                     <td>
                                                         <?= $row['usr_name'] ?>
@@ -189,16 +184,12 @@ if ($usr_status == 2) {
                                                     <td>
                                                         <?= $row['usr_date'] ?>
                                                     </td>
-                                                    <td><a href="remove_kcym_member.php?id=<?= $row['id'] ?>&pos_id=<?= $row['usr_position'] ?>"
-                                                            class="btn btn-danger">Delete</a></td>
+                                                    <td><a href="remove_kcym_member.php?id=<?= $row['id'] ?>&pos_id=<?= $row['usr_position'] ?>" class="btn btn-danger">Delete</a></td>
                                                 </tr>
                                             <?php } ?>
                                         </table>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -226,7 +217,7 @@ if ($usr_status == 2) {
         <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
         <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
     </body>
-    <?php
+<?php
     if (isset($_POST['subBtn'])) {
         $name = $_POST['usr_name'];
         $position = $_POST['position'];
@@ -243,9 +234,7 @@ if ($usr_status == 2) {
             $yourURL = "kcym.php";
             echo ("<script>location.href='$yourURL'</script>");
         }
-
     }
-
 } else {
     $yourURL = "/parmas/index.php";
     echo ("<script>location.href='$yourURL'</script>");
@@ -253,9 +242,9 @@ if ($usr_status == 2) {
 ?>
 <script>
     datePicker.max = new Date().toISOString().split("T")[0];
-    $(document).ready(function () {
+    $(document).ready(function() {
         var r_fname = true;
-        $("#usr_name").keyup(function () {
+        $("#usr_name").keyup(function() {
             var fname = $("#usr_name").val();
             var c_fname = /^[a-z ]{3,}$/i;
             r_fname = c_fname.test(fname)
@@ -269,6 +258,7 @@ if ($usr_status == 2) {
             }
         })
     })
+
     function fileValidation() {
         var fileInput =
             document.getElementById('profile');
