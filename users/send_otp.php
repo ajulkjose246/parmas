@@ -146,8 +146,8 @@ if (isset($_POST["recover"])) {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'mail.ajulkjose@gmail.com';
-            $mail->Password = 'eptsxtlxgymheucs';
+            $mail->Username = 'mail.akjpc@gmail.com';
+            $mail->Password = 'rbauofmsfdeseoqy';
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
 

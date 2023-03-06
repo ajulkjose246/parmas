@@ -5,7 +5,7 @@ session_start();
 require("../../connection/db_connect.php");
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
-    ?>
+?>
 
     <head>
 
@@ -55,8 +55,7 @@ if ($usr_status == 1) {
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="/parmas/assets/img/user.png" width="40" height="40" class="rounded-circle">
                                 </a>
 
@@ -84,54 +83,13 @@ if ($usr_status == 1) {
                                         <h6 class="m-0 font-weight-bold text-primary">KCYM Members</h6>
                                     </div>
                                     <div class="card-body">
-                                        <table style="width: 100%;border-collapse:separate;border-spacing:0 15px;">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Date</th>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <hr width="250%">
-                                                </td>
-                                            </tr>
-                                            <?php
-                                            $sql = "SELECT * FROM `tbl_kcym` WHERE `usr_status` = 1 ORDER BY `tbl_kcym`.`usr_position`";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <?= $row['usr_name'] ?>
-                                                    </td>
-                                                    <?php
-                                                    if ($row['usr_position'] == 1) { ?>
-                                                        <td>President</td>
-                                                    <?php } elseif ($row['usr_position'] == 2) { ?>
-                                                        <td>Vice president</td>
-                                                    <?php } elseif ($row['usr_position'] == 3) { ?>
-                                                        <td>Secretary</td>
-                                                    <?php } elseif ($row['usr_position'] == 4) { ?>
-                                                        <td>Joint secretary</td>
-                                                    <?php } elseif ($row['usr_position'] == 5) { ?>
-                                                        <td>Treasurer</td>
-                                                    <?php } elseif ($row['usr_position'] == 6) { ?>
-                                                        <td>Executive 1</td>
-                                                    <?php } elseif ($row['usr_position'] == 7) { ?>
-                                                        <td>Executive 2</td>
-                                                    <?php } elseif ($row['usr_position'] == 8) { ?>
-                                                        <td>Executive 3</td>
-                                                    <?php } else { ?>
-                                                        <td>Executive 4</td>
-                                                    <?php } ?>
-
-                                                    <td>
-                                                        <?= $row['usr_date'] ?>
-                                                    </td>
-                                                    
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
+                                        <select id="kcym_year" onchange="kcym_sort_year()" class="form-control">
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                        <div id="result"></div>
                                     </div>
                                 </div>
 
@@ -157,7 +115,7 @@ if ($usr_status == 1) {
         <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
         <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
     </body>
-    <?php
+<?php
     if (isset($_POST['subBtn'])) {
         $name = $_POST['usr_name'];
         $position = $_POST['position'];
@@ -174,15 +132,29 @@ if ($usr_status == 1) {
             $yourURL = "kcym.php";
             echo ("<script>location.href='$yourURL'</script>");
         }
-
     }
-
 } else {
     $yourURL = "/parmas/index.php";
     echo ("<script>location.href='$yourURL'</script>");
 }
 ?>
 <script>
-    datePicker.max = new Date().toISOString().split("T")[0];
+    $(document).ready(function(){
+        kcym_sort_year();
+    })
+    function kcym_sort_year() {
+        var year = $('#kcym_year').find(":selected").val();
+        $.ajax({
+            url: "kcym_year_sort.php",
+            method: "post",
+            data: {
+                year: year
+            },
+            success: function(data) {
+                $('#result').html(data);
+            }
+        });
+    }
 </script>
+
 </html>
