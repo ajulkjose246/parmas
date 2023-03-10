@@ -2,8 +2,7 @@
 session_start();
 require("../connection/db_connect.php");
 $usr_id = $_SESSION['user']['usr_id']; ?>
-<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
-<script src="/parmas/assets/js/cdn/checkout.js"></script>
+
 <link rel="stylesheet" href="/parmas/assets/css/offerings.css">
 
 <section style="background-color: #eee;">
@@ -28,7 +27,7 @@ $usr_id = $_SESSION['user']['usr_id']; ?>
             <h5 class="card-title mb-3"><?=$row['offer_name']?></h5>
             <p>(<?=$row['offer_name_mala']?>)</p>
             <!-- <a class="mb-3 btn btn-success" style="margin-top: 7%;">Offer Now</a> -->
-            <a href="/parmas/pages/payment.php?id=<?=$row['offer_id']?>" class="mb-3 btn btn-success" style="margin-top: 7%;">Offer Now</a>
+            <a  href="/parmas/pages/payment.php?id=<?=$row['offer_id']?>"class="mb-3 btn btn-success" style="margin-top: 7%;">Offer Now</a>
           </div>
         </div>
       </div>
