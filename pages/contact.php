@@ -1,10 +1,13 @@
 <?php require("../header.php");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require('../assets/PHPMailer/src/Exception.php');
-require('../assets/PHPMailer/src/PHPMailer.php');
-require('../assets/PHPMailer/src/SMTP.php');
+require("../../email.php");
+
+require('../../PHPMailer/src/Exception.php');
+require('../../PHPMailer/src/PHPMailer.php');
+require('../../PHPMailer/src/SMTP.php');
 
 ?>
 <link rel="stylesheet" href="/parmas/assets/css/contact.css">
@@ -23,24 +26,19 @@ require('../assets/PHPMailer/src/SMTP.php');
 						<form class="form" method="post" action="#" onsubmit="return validation();">
 							<div class="row">
 								<div class="form-group col-md-6">
-									<input type="text" name="name" class="form-control" placeholder="Name"
-										required="required">
+									<input type="text" name="name" class="form-control" placeholder="Name" required="required">
 								</div>
 								<div class="form-group col-md-6">
-									<input type="email" name="email" class="form-control" placeholder="Email"
-										required="required">
+									<input type="email" name="email" class="form-control" placeholder="Email" required="required">
 								</div>
 								<div class="form-group col-md-12">
-									<input type="text" name="subject" class="form-control" placeholder="Subject"
-										required="required">
+									<input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
 								</div>
 								<div class="form-group col-md-12">
-									<textarea rows="6" name="message" class="form-control" placeholder="Your Message"
-										required="required"></textarea>
+									<textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
 								</div>
 								<div class="col-md-12 text-center">
-									<input type="submit" name="submit" id="submitButton" class="btn btn-contact-bg"
-										value="Send Message">
+									<input type="submit" name="submit" id="submitButton" class="btn btn-contact-bg" value="Send Message">
 								</div>
 							</div>
 						</form>
@@ -48,11 +46,11 @@ require('../assets/PHPMailer/src/SMTP.php');
 				</div>
 				<div class="col-lg-5">
 					<a href="https://goo.gl/maps/Cix8rEdSa8tG3MDJ7" target="_blank">
-					<div class="single_address">
-						<i class="fa fa-map-marker"></i>
-						<h4>Our Address</h4>
-						<p>Adakkakundu, Malappuram - 676525</p>
-					</div>
+						<div class="single_address">
+							<i class="fa fa-map-marker"></i>
+							<h4>Our Address</h4>
+							<p>Adakkakundu, Malappuram - 676525</p>
+						</div>
 					</a>
 					<a href="mailto:someone@example.com">
 						<div class="single_address">
@@ -62,11 +60,11 @@ require('../assets/PHPMailer/src/SMTP.php');
 						</div>
 					</a>
 					<a href="tel:+8078234246">
-					<div class="single_address">
-						<i class="fa fa-phone"></i>
-						<h4>Call us on</h4>
-						<p>(+91) 8078234246</p>
-					</div>
+						<div class="single_address">
+							<i class="fa fa-phone"></i>
+							<h4>Call us on</h4>
+							<p>(+91) 8078234246</p>
+						</div>
 					</a>
 					<div class="single_address">
 						<i class="fa fa-clock-o"></i>
@@ -75,10 +73,7 @@ require('../assets/PHPMailer/src/SMTP.php');
 					</div>
 				</div>
 				<div class="col-12">
-					<iframe class="pt-5 pb-5"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.2015388941118!2d76.34361261460968!3d11.17270859205334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba62f2367ab9381%3A0x5bcb9fed8f24de2a!2sSt.%20George%20Church!5e0!3m2!1sen!2sin!4v1676994301508!5m2!1sen!2sin"
-						width="100%" height="100%" allowfullscreen="" loading="lazy"
-						referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<iframe class="pt-5 pb-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.2015388941118!2d76.34361261460968!3d11.17270859205334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba62f2367ab9381%3A0x5bcb9fed8f24de2a!2sSt.%20George%20Church!5e0!3m2!1sen!2sin!4v1676994301508!5m2!1sen!2sin" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>
 		</div>
@@ -94,8 +89,8 @@ if (isset($_POST['submit'])) {
 	$mail->isSMTP();
 	$mail->Host = 'smtp.gmail.com';
 	$mail->SMTPAuth = true;
-	$mail->Username = 'mail.akjpc@gmail.com';
-	$mail->Password = 'rbauofmsfdeseoqy';
+	$mail->Username = "$email_address";
+	$mail->Password = "$email_password";
 	$mail->SMTPSecure = 'ssl';
 	$mail->Port = 465;
 

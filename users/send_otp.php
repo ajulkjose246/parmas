@@ -3,13 +3,13 @@
 <?php
 session_start();
 require("../connection/db_connect.php");
+require("../../email.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require('../assets/PHPMailer/src/Exception.php');
-require('../assets/PHPMailer/src/PHPMailer.php');
-require('../assets/PHPMailer/src/SMTP.php');
+require('../../PHPMailer/src/Exception.php');
+require('../../PHPMailer/src/PHPMailer.php');
+require('../../PHPMailer/src/SMTP.php');
 
 
 ?>
@@ -146,8 +146,8 @@ if (isset($_POST["recover"])) {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'mail.akjpc@gmail.com';
-            $mail->Password = 'rbauofmsfdeseoqy';
+            $mail->Username = "$email_address";
+            $mail->Password = "$email_password";
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
 
