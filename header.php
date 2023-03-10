@@ -61,7 +61,7 @@ if ($usr_status == 1) {
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Services</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Apply Death Relief Fund</a></li>
+                            <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
                             <li><a class="dropdown-item" href="#">Wedding</a></li>
                         </ul>
                     </li>

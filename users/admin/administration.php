@@ -5,7 +5,7 @@ session_start();
 require("../../connection/db_connect.php");
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
-    ?>
+?>
 
     <head>
 
@@ -56,8 +56,7 @@ if ($usr_status == 1) {
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="/parmas/assets/img/user.png" width="40" height="40" class="rounded-circle">
                                 </a>
 
@@ -86,8 +85,7 @@ if ($usr_status == 1) {
                                     <div class="card-body">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" name="search_text" id="search_text"
-                                                    placeholder="Search" class="form-control" />
+                                                <input type="text" name="search_text" id="search_text" placeholder="Search" class="form-control" />
                                             </div>
                                         </div>
                                         <br />
@@ -102,50 +100,13 @@ if ($usr_status == 1) {
                                         <h6 class="m-0 font-weight-bold text-primary">Administration Members</h6>
                                     </div>
                                     <div class="card-body">
-                                        <table style="width: 100%;border-collapse:separate;border-spacing:0 15px;">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Date</th>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <hr width="250%">
-                                                </td>
-                                            </tr>
-                                            <?php
-                                            $sql = "SELECT * FROM `tbl_administration` WHERE `usr_status` = 0 ORDER BY `tbl_administration`.`usr_position`";
-                                            $result = mysqli_query($con, $sql);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                <tr>
-                                                    <td>
-                                                        <?= $row['usr_name'] ?>
-                                                    </td>
-                                                    <?php
-                                                    if ($row['usr_position'] == 1) { ?>
-                                                        <td>Vicar</td>
-                                                    <?php } elseif ($row['usr_position'] == 2) { ?>
-                                                        <td>Assistant Vicar</td>
-                                                    <?php } elseif ($row['usr_position'] == 3) { ?>
-                                                        <td>Chairman</td>
-                                                    <?php } elseif ($row['usr_position'] == 4) { ?>
-                                                        <td>Secretary</td>
-                                                    <?php } elseif ($row['usr_position'] == 5) { ?>
-                                                        <td>Vice Chairman</td>
-                                                    <?php } elseif ($row['usr_position'] == 6) { ?>
-                                                        <td>Joint Secretary</td>
-                                                    <?php } elseif ($row['usr_position'] == 7) { ?>
-                                                        <td>Treasearer</td>
-                                                    <?php } ?>
-
-                                                    <td>
-                                                        <?= $row['usr_date'] ?>
-                                                    </td>
-
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
+                                        <select id="kcym_year" onchange="administration_sort_year()" class="form-control">
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                        <div id="administration_memb"></div>
                                     </div>
                                 </div>
 
@@ -165,46 +126,64 @@ if ($usr_status == 1) {
             </div>
         </div>
     </body>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script> -->
 
-        <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
-        <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
-        <script src="/parmas/assets/js/cdn/sb-admin-2.min.js"></script>
-        <script src="/parmas/assets/js/cdn/popper.min.js"></script>
-        <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
-        <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#search_text').keyup(function () {
-                    var search = $(this).val();
-                    if (search != '') {
-                        load_data(search);
-                    }
-                    else {
-                        load_data();
-                    }
-                });
-                function load_data(query) {
-                    $.ajax({
-                        url: "fetch.php",
-                        method: "post",
-                        data: { query: query },
-                        success: function (data) {
-                            $('#result').html(data);
-                        }
-                    });
+    <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
+    <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
+    <script src="/parmas/assets/js/cdn/sb-admin-2.min.js"></script>
+    <script src="/parmas/assets/js/cdn/popper.min.js"></script>
+    <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
+    <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search_text').keyup(function() {
+                var search = $(this).val();
+                if (search != '') {
+                    load_data(search);
+                } else {
+                    load_data();
                 }
             });
-        </script>
-        <script>
-            datePicker.max = new Date().toISOString().split("T")[0];
-        </script>
-    <?php
+
+            function load_data(query) {
+                $.ajax({
+                    url: "fetch.php",
+                    method: "post",
+                    data: {
+                        query: query
+                    },
+                    success: function(data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            administration_sort_year();
+        })
+
+        function administration_sort_year() {
+            var year = $('#kcym_year').find(":selected").val();
+            $.ajax({
+                url: "administration_sort_year.php",
+                method: "post",
+                data: {
+                    year: year
+                },
+                success: function(data) {
+                    $('#administration_memb').html(data);
+                }
+            });
+        }
+    </script>
+<?php
     if (isset($_POST['subBtn'])) {
         $name = $_POST['usr_name'];
         $position = $_POST['position'];

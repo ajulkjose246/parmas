@@ -36,7 +36,7 @@ if ($usr_status == 1) {
     <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <!-- <i class="fas fa-laugh-wink"></i> -->
                     </div>
@@ -91,7 +91,7 @@ if ($usr_status == 1) {
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Income</div>
+                                                    Offerings</div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">₹<?= $total_amt?></div>
                                             </div>
                                             <div class="col-auto">
