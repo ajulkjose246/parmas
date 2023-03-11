@@ -99,19 +99,6 @@ $(document).ready(function () {
 
         }
     })
-    $("#usr_ward").keyup(function () {
-        var usr_ward = $("#usr_ward").val();
-        var c_usr_ward = /^[0-9]$/;
-        r_usr_ward = c_usr_ward.test(usr_ward)
-        if (!r_usr_ward) {
-            $("#ward_error").text("Enter a valid Ward");
-            $("#Update").prop('disabled', true);
-        } else {
-            $("#ward_error").text("");
-            valids()
-
-        }
-    })
     $("#pwd").keyup(function () {
         pwd = $("#pwd").val();
         var c_pwd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
