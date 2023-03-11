@@ -56,30 +56,30 @@ if ($usr_id == null) {
             <li class="nav-item"> <a class="nav-link px-2 active" aria-current="page" href="#">Enter Details</a> </li>
           </ul>
 
-          <form action="#" method="POST">
+          <!-- <form action="#" method="POST"> -->
             <div class="row">
               <div class="col-12">
-                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Email</span>
+                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Email <label class="form-label error" id="e_error"></label></span>
                   <div class="inputWithIcon"> <input class="form-control" id="usr_email" type="email" required></div>
                 </div>
               </div>
               <div class="col-md-11">
-                <div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4"> <span>Offering<span class="ps-1">Date</span></span>
+                <div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4"> <span>Offering<span class="ps-1">Date <label class="form-label error" id="d_error"></label></span></span>
                   <div class="inputWithIcon"> <input type="text" class="form-control" id="datepicker" required></div>
                 </div>
               </div>
 
               <div class="col-12">
-                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Please List out all your Holy Mass Intentions One by One</span>
-                  <div class="inputWithIcon"> <input type="text" id="offer_msg" class="form-control" rows="2" required></div>
+                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Please List out all your Holy Mass Intentions One by One <label class="form-label error" id="o_error"></label></span>
+                  <div class="inputWithIcon"> <input type="text" id="offer_msg" class="form-control" rows="2"></div>
                 </div>
               </div>
               <div class="col-12 px-md-5 px-4 mt-3">
-                <button style="display:none" id="paymentBtn" onclick="pay_now(<?= $row['offer_price'] ?>,<?= $row['offer_id'] ?>,<?=$usr_id?>)" class="btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></button>
-                <a type="submit" class="paymentBtn btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></a>
+                <button id="paymentBtn" onclick="pay_now(<?= $row['offer_price'] ?>,<?= $row['offer_id'] ?>,<?= $usr_id ?>)" class="btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></button>
+                <!-- <a type="submit" class="paymentBtn btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></a> -->
               </div>
             </div>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </section>
@@ -88,72 +88,7 @@ if ($usr_id == null) {
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
   <script src="/parmas/assets/js/cdn/checkout.js"></script>
-<script>
-  $(".paymentBtn").click(function(){
-    var email=$("#usr_email").val();
-    var date=$("#datepicker").val();
-    var msg=$("#offer_msg").val();
-    if(email!="" && date!=""){
-      $("#paymentBtn").click()
-    }else{
-      alert("Pls enter full Details")
-    }
-  })
-</script>
-
-  <script>
-    $(function() {
-      function unavailable(date) {
-        dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-        if ($.inArray(dmy, disable_date) == -1) {
-          return [true, ""];
-        } else {
-          return [false, "", "Unavailable"];
-        }
-      }
-
-      $("#datepicker").datepicker({
-        dateFormat: 'd-m-yy',
-        beforeShowDay: unavailable,
-        minDate: 0,
-      });
-    });
-  </script>
-  <script>
-    function pay_now(amt, name, uid) {
-      if (uid != null) {
-        jQuery.ajax({
-          type: 'post',
-          url: 'payment_process.php',
-          data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid,
-          success: function(result) {
-            var options = {
-              "key": "rzp_test_UY1y7bu0apmIK4",
-              "amount": amt * 100,
-              "currency": "INR",
-              "name": "PARMAS",
-              "description": name,
-              "image": "https://raw.githubusercontent.com/ajulkjose246/parmas/master/assets/img/logo.png",
-              "handler": function(response) {
-                jQuery.ajax({
-                  type: 'post',
-                  url: 'payment_process.php',
-                  data: "payment_id=" + response.razorpay_payment_id,
-                  success: function(result) {
-                    window.location.href = "offerings.php";
-                  }
-                });
-              }
-            };
-            var rzp1 = new Razorpay(options);
-            rzp1.open();
-          }
-        });
-      } else {
-        alert("Pls login")
-      }
-    }
-  </script>
+  <script src="/parmas/assets/js/payment.js"></script>
 <?php
 }
 ?>

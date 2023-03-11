@@ -203,3 +203,7 @@ form .btn.btn-primary:hover {
         font-size: 12px
     }
 }
+
+.error{
+    color: red !important;
+}
