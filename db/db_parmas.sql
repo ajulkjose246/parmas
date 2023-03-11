@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2023 at 07:54 AM
+-- Generation Time: Mar 11, 2023 at 11:03 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -127,6 +127,7 @@ INSERT INTO `tbl_family_unit` (`unit_id`, `unit_name`) VALUES
 CREATE TABLE `tbl_gallery` (
   `img_id` int(11) NOT NULL,
   `img_location` varchar(150) NOT NULL,
+  `img_category` varchar(30) NOT NULL,
   `img_status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -134,11 +135,11 @@ CREATE TABLE `tbl_gallery` (
 -- Dumping data for table `tbl_gallery`
 --
 
-INSERT INTO `tbl_gallery` (`img_id`, `img_location`, `img_status`) VALUES
-(3, '2016-08-01.jpg', 1),
-(4, '2022-11-17 (1).jpg', 1),
-(5, '2022-11-17.jpg', 1),
-(6, 'IMG_20210819_180754.jpg', 1);
+INSERT INTO `tbl_gallery` (`img_id`, `img_location`, `img_category`, `img_status`) VALUES
+(3, '2016-08-01.jpg', 'Church', 1),
+(4, '2022-11-17 (1).jpg', 'School', 1),
+(5, '2022-11-17.jpg', 'Church', 1),
+(6, 'IMG_20210819_180754.jpg', 'School', 1);
 
 -- --------------------------------------------------------
 
@@ -228,6 +229,32 @@ INSERT INTO `tbl_login` (`log_id`, `usr_id`, `usr_email`, `usr_password`, `reset
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_offering`
+--
+
+CREATE TABLE `tbl_offering` (
+  `offer_id` int(11) NOT NULL,
+  `offer_name` varchar(100) NOT NULL,
+  `offer_name_mala` varchar(100) NOT NULL,
+  `offer_price` int(11) NOT NULL,
+  `offer_image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_offering`
+--
+
+INSERT INTO `tbl_offering` (`offer_id`, `offer_name`, `offer_name_mala`, `offer_price`, `offer_image`) VALUES
+(1, 'SOLEMN HOLY MASS', 'പാട്ടുകുർബാന', 150, 'SOLEMN_HOLY_MASS.webp'),
+(2, 'ORDINARY HOLY MASS', 'ഒറ്റ കുർബാന', 100, 'ORDINARY_HOLY_MASS.webp'),
+(3, 'HOLY MASS FOR THE EPARTED', 'മരിച്ചവർക്കു വേണ്ടിയുള്ള കുർബാന', 100, 'HOLY_MASS_DEPARTED.webp'),
+(4, 'OFFICE OF THE DEPARTED', 'ഒപ്പീസ്', 25, 'departed.webp'),
+(5, 'NOVENA', 'നൊവേന', 60, 'NOVENA.webp'),
+(6, 'LADEENJU', 'ലദീഞ്ഞ്', 60, 'NOVENA.webp');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_payment`
 --
 
@@ -236,21 +263,18 @@ CREATE TABLE `tbl_payment` (
   `amount` int(11) NOT NULL,
   `payment_status` varchar(50) NOT NULL,
   `payment_id` varchar(50) NOT NULL,
+  `payment_date` varchar(50) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `offer_type` varchar(50) NOT NULL,
-  `added_on` datetime NOT NULL
+  `offer_type` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
-INSERT INTO `tbl_payment` (`id`, `amount`, `payment_status`, `payment_id`, `user_id`, `offer_type`, `added_on`) VALUES
-(50, 150, 'Success', '', 15, 'SOLEMN HOLY MASS', '2023-03-01 05:46:24'),
-(51, 100, 'Success', '', 20, 'ORDINARY HOLY MASS', '2023-03-02 10:32:52'),
-(53, 150, 'Success', '', 20, 'SOLEMN HOLY MASS', '2023-03-02 12:35:17'),
-(54, 150, 'Success', '', 26, 'SOLEMN HOLY MASS', '2023-03-03 04:37:52'),
-(55, 100, 'Success', '', 26, 'ORDINARY HOLY MASS', '2023-03-03 04:39:07');
+INSERT INTO `tbl_payment` (`id`, `amount`, `payment_status`, `payment_id`, `payment_date`, `user_id`, `offer_type`) VALUES
+(50, 150, 'Success', '', '28-3-2023', 15, 1),
+(60, 150, 'Success', '', '13-3-2023', 26, 1);
 
 -- --------------------------------------------------------
 
@@ -339,6 +363,12 @@ ALTER TABLE `tbl_login`
   ADD PRIMARY KEY (`log_id`);
 
 --
+-- Indexes for table `tbl_offering`
+--
+ALTER TABLE `tbl_offering`
+  ADD PRIMARY KEY (`offer_id`);
+
+--
 -- Indexes for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
@@ -403,10 +433,16 @@ ALTER TABLE `tbl_login`
   MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT for table `tbl_offering`
+--
+ALTER TABLE `tbl_offering`
+  MODIFY `offer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tbl_register`

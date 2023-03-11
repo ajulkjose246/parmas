@@ -7,6 +7,7 @@ require("../../email.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require('../../PHPMailer/src/Exception.php');
 require('../../PHPMailer/src/PHPMailer.php');
 require('../../PHPMailer/src/SMTP.php');
@@ -57,8 +58,7 @@ require('../../PHPMailer/src/SMTP.php');
                                 </div>
 
                                 <div class="log_btns">
-                                    <button type="submit" id="signin" name="recover"
-                                        class="btn btn-primary">Send OTP</button>
+                                    <button type="submit" id="signin" name="recover" class="btn btn-primary">Send OTP</button>
                                     <a href="./login.php" class="btn btn-primary">Cancel</a>
                                 </div>
 
@@ -69,13 +69,11 @@ require('../../PHPMailer/src/SMTP.php');
             </div>
         </div>
         <!-- Button trigger modal -->
-        <button type="button" id="email_send" class="btn btn-primary" style="display:none" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+        <button type="button" id="email_send" class="btn btn-primary" style="display:none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -92,23 +90,18 @@ require('../../PHPMailer/src/SMTP.php');
                                         <div> <span>A code has been sent to</span> <small id="user_email"></small>
                                         </div>
                                         <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-                                            <input class="m-2 text-center form-control rounded" name="num1" type="text"
-                                                id="first" maxlength="1" required>
-                                            <input class="m-2 text-center form-control rounded" name="num2" type="text"
-                                                id="second" maxlength="1" required>
-                                            <input class="m-2 text-center form-control rounded" name="num3" type="text"
-                                                id="third" maxlength="1" required>
-                                            <input class="m-2 text-center form-control rounded" name="num4" type="text"
-                                                id="fourth" maxlength="1" required>
-                                            <input class="m-2 text-center form-control rounded" name="num5" type="text"
-                                                id="fifth" maxlength="1" required>
-                                            <input class="m-2 text-center form-control rounded" name="num6" type="text"
-                                                id="sixth" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num1" type="text" id="first" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num2" type="text" id="second" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num3" type="text" id="third" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num4" type="text" id="fourth" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num5" type="text" id="fifth" maxlength="1" required>
+                                            <input class="m-2 text-center form-control rounded" name="num6" type="text" id="sixth" maxlength="1" required>
                                         </div>
                                         <div class="mt-4">
-                                            <input type="submit" class="btn btn-primary px-4" name="validateBtn"
-                                                value="validate"><br>
+                                            <input type="submit" class="btn btn-primary px-4" name="validateBtn" value="validate"><br>
                                             <span id="otp_error" style="color:red"></span>
+                                            <!-- <div>Time left = <span id="timer"></span></div> -->
+                                            <div> OTP will expire in 2 mins</div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,6 +119,28 @@ require('../../PHPMailer/src/SMTP.php');
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
+<!-- set otp timer
+<script>
+    let timerOn = true;
+    function timer(remaining) {
+        var m = Math.floor(remaining / 60);
+        var s = remaining % 60;
+        m = m < 10 ? '0' + m : m;
+        s = s < 10 ? '0' + s : s;
+        document.getElementById('timer').innerHTML = m + ':' + s;
+        remaining -= 1;
+        if (remaining >= 0 && timerOn) {
+            setTimeout(function() {
+                timer(remaining);
+            }, 1000);
+            return;
+        }
+        if (!timerOn) {
+            return;
+        }
+        alert('Timeout for otp');
+    }
+</script> -->
 <?php
 
 if (isset($_POST["recover"])) {
@@ -158,6 +173,8 @@ if (isset($_POST["recover"])) {
             $body = nl2br("Dear User, \r\n We have received a request to verify your identity for your account on PARMAS. \r\n Please use the following OTP to complete the verification process: \r\n OTP: <b> $token </b>\r\n Please note that the OTP is valid for 5 minutes only. \r\n If you do not use the OTP within this time, you will need to submit a new request. \r\n If you did not initiate this request, \r\n please contact us immediately at parmas.help@gmail.com and do not share the OTP with anyone. \r\n If you have any questions or concerns, please feel free to contact us at parmas.help@gmail.com.\r\n<b>Thank you,\r\n PARMAS</b>");
             $mail->Body = "$body";
             $mail->send();
+            $current_time = time();
+            $_SESSION['otp_expire'] = $current_time + (2 * 60);
             echo ("<script>document.getElementById('closeBtn').style.display = 'none'</script>");
             echo ("<script>document.getElementById('user_email').innerHTML = '$email'</script>");
             echo ("<script>document.getElementById('email_send').click()</script>");
@@ -178,28 +195,58 @@ if (isset($_POST["validateBtn"])) {
     $usr_otp = $num1 . $num2 . $num3 . $num4 . $num5 . $num6;
 
     $usr_reset_email = $_SESSION['usr_reset_email'];
-
     $otp = $_SESSION['user_otp'];
-    if ($otp == $usr_otp) {
-        $_SESSION['reset_email'] = $usr_reset_email;
-        echo ("<script>location.href='/parmas/users/change_password.php'</script>");
-    } else {
-        echo ("<script>document.getElementById('otp_error').innerHTML = 'Invalid OTP'</script>");
+    $current_time = time();
+    if ($current_time > $_SESSION['otp_expire']) {
+        $_SESSION['user_otp'] = 0;
+        echo ("<script>document.getElementById('otp_error').innerHTML = 'OTP Expired'</script>");
         echo ("<script>document.getElementById('closeBtn').style.display = 'none'</script>");
         echo ("<script>document.getElementById('user_email').innerHTML = '$usr_reset_email'</script>");
         echo ("<script>document.getElementById('email_send').click()</script>");
+    } else {
+        if ($otp == $usr_otp) {
+            $_SESSION['reset_email'] = $usr_reset_email;
+            echo ("<script>location.href='/parmas/users/change_password.php'</script>");
+        } else {
+            echo ("<script>document.getElementById('otp_error').innerHTML = 'Invalid OTP'</script>");
+            echo ("<script>document.getElementById('closeBtn').style.display = 'none'</script>");
+            echo ("<script>document.getElementById('user_email').innerHTML = '$usr_reset_email'</script>");
+            echo ("<script>document.getElementById('email_send').click()</script>");
+        }
     }
 }
 
 ?>
 <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function(event) {
         function OTPInput() {
             const inputs = document.querySelectorAll('#otp > *[id]');
-            for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function (event) { if (event.key === "Backspace") { inputs[i].value = ''; if (i !== 0) inputs[i - 1].focus(); } else { if (i === inputs.length - 1 && inputs[i].value !== '') { return true; } else if (event.keyCode > 47 && event.keyCode < 58) { inputs[i].value = event.key; if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode > 64 && event.keyCode < 91) { inputs[i].value = String.fromCharCode(event.keyCode); if (i !== inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); }
-        } OTPInput();
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('keydown', function(event) {
+                    if (event.key === "Backspace") {
+                        inputs[i].value = '';
+                        if (i !== 0) inputs[i - 1].focus();
+                    } else {
+                        if (i === inputs.length - 1 && inputs[i].value !== '') {
+                            return true;
+                        } else if (event.keyCode > 47 && event.keyCode < 58) {
+                            inputs[i].value = event.key;
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        } else if (event.keyCode > 64 && event.keyCode < 91) {
+                            inputs[i].value = String.fromCharCode(event.keyCode);
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        }
+                    }
+                });
+            }
+        }
+        OTPInput();
     });
 </script>
+
+
 
 </html>
 
