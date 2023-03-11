@@ -92,5 +92,42 @@ if ($usr_id == null) {
 <?php
 }
 ?>
-
+<script>
+  function pay_now(amt, name, uid) {
+  if (uid != null) {
+    if (offer_msg == true && offer_date == true && r_email == true) {
+      jQuery.ajax({
+        type: "post",
+        url: "payment_process.php",
+        data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid,
+        success: function (result) {
+          var options = {
+            key: "rzp_test_UY1y7bu0apmIK4",
+            amount: amt * 100,
+            currency: "INR",
+            name: "PARMAS",
+            description: name,
+            image:
+              "https://raw.githubusercontent.com/ajulkjose246/parmas/master/assets/img/logo.png",
+            handler: function (response) {
+              jQuery.ajax({
+                type: "post",
+                url: "payment_process.php",
+                data: "payment_id=" + response.razorpay_payment_id +"amt=" + amt + "&name=" + name + "&usr_id=" + uid,
+                success: function (result) {
+                  window.location.href = "offerings.php";
+                },
+              });
+            },
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.open();
+        },
+      });
+    }
+  } else {
+    alert("Pls login");
+  }
+}
+</script>
 </html>
