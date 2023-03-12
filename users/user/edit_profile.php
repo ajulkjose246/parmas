@@ -56,7 +56,7 @@ $uid = $user['usr_id'];
                                         Overview </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="edit_family_members.php">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Add Family Members </a>
                                 </li>
