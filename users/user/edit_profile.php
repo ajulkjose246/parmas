@@ -21,7 +21,7 @@ $uid = $user['usr_id'];
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <form method="POST" action="#" class="file-upload" enctype="multipart/form-data">
             <div class="row profile">
                 <div class="col-md-3">

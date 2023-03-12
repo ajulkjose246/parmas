@@ -2,6 +2,12 @@
 <html lang="en">
 <?php
 session_start();
+$fam_members_count = $_COOKIE['fam_members_count'];
+for ($i = 2; $i <= $fam_members_count; $i++) {
+    echo ("<script>document.cookie = 'fam_members' + $i + '=0';</script>");
+    echo ("<script>document.cookie = 'fam_members_count=0';</script>");
+    echo ("<script>fam_memb = 1;</script>");
+}
 // error_reporting(E_ERROR | E_PARSE);
 
 require("../../connection/db_connect.php");
@@ -20,14 +26,14 @@ $user_id = $user['usr_id'];
 
     <link rel="stylesheet" href="/parmas/assets/css/profile.css">
     <style>
-        input{
-            cursor: context-menu!important;
+        input {
+            cursor: context-menu !important;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row profile">
             <div class="col-md-3">
                 <nav aria-label="breadcrumb">

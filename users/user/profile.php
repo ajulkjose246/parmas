@@ -25,7 +25,7 @@ $user = $_SESSION['user'];
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row profile">
             <div class="col-md-3">
                 <nav aria-label="breadcrumb">

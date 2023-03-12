@@ -24,7 +24,7 @@ $user_id = $user['usr_id'];
 </head>
 
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <div class="row profile">
             <div class="col-md-3">
                 <nav aria-label="breadcrumb">
@@ -117,11 +117,11 @@ $user_id = $user['usr_id'];
                                                         <input type="text" class="form-control" onkeyup="relationshipvalidation(<?= $i ?>,this.value)" id="upd_relationship<?= $i ?>" name="fam_relationship<?= $i ?>" value="<?= $row['fam_relationship'] ?>" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-12">
-                                                    <div class="mb-3 text-center">
-                                                        <input type="submit" class="btn btn-success" id="famUpldBtn<?= $i ?>" name="famUpldBtn<?= $i ?>" value="Update">
-                                                        <a href="remove_family_members.php?id=<?= $row['fam_id'] ?>" class="btn btn-danger" name="famUpldBtn<?= $i ?>">Delete</a>
-                                                    </div>
+                                                <div class="col-12 col-md-6 mt-5">
+                                                    <input type="submit" style="width: 100%;" class="btn btn-success" id="famUpldBtn<?= $i ?>" name="famUpldBtn<?= $i ?>" value="Update">
+                                                </div>
+                                                <div class="col-12 col-md-6 mt-5">
+                                                    <a href="remove_family_members.php?id=<?= $row['fam_id'] ?>" style="width: 100%;" class="btn btn-danger" name="famUpldBtn<?= $i ?>">Delete</a>
                                                 </div>
 
                                             </div>
@@ -183,12 +183,11 @@ $user_id = $user['usr_id'];
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-12">
-                                        <div class="mb-3 text-center">
-                                            <!-- <div class="mt-5 text-right"> -->
-                                            <input type="submit" class="btn btn-success" id="addBtn" name="famUpldBtn" value="Add">
-                                            <a href="family_members.php" class="btn btn-danger" name="famUpldBtn">Cancel</a>
-                                        </div>
+                                    <div class="col-12 col-md-6 mt-5">
+                                        <input type="submit" style="width:100%" class="btn btn-success" id="addBtn" name="famUpldBtn" value="Add">
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-5">
+                                        <a href="family_members.php" style="width: 100%;" class="btn btn-danger" name="famUpldBtn">Cancel</a>
                                     </div>
                                 </form>
                             </div>
@@ -224,7 +223,7 @@ for ($j = 1; $j <= $i; $j++) {
     $(document).ready(function() {
         $("#add_member").click(function() {
             fam_memb++
-            $("#family_memb").append("<div class='row mt-5' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-10 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> Family Members </label> </div> </div> <div class='col-2 col-md-2 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Name<label class='form-label error' id='addName_error"+fam_memb+"'></label></label> <input type='text' onkeyup='addNamevalidation(" + fam_memb + ",this.value)' name='fam_name" + fam_memb + "' class='form-control' id='fam_name" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Date Of Birth</label> <input type='date' name='fam_dob" + fam_memb + "' class='form-control' id='fam_dob" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Gender</label><br> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='success" + fam_memb + "-outlined' value='Male' autocomplete='off' checked> <label class='btn btn-outline-secondary' for='success" + fam_memb + "-outlined' style='width: 40%;'>Male </label> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='danger" + fam_memb + "-outlined' value='Female' autocomplete='off'> <label class='btn btn-outline-secondary' for='danger" + fam_memb + "-outlined' style='width: 40%;'> Female </label> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Relationship<label class='form-label error' id='addRelationship_error"+fam_memb+"'></label></label> <input type='text' onkeyup='addRelationshipvalidation(" + fam_memb + ",this.value)' name='fam_relationship" + fam_memb + "' class='form-control' id='fam_relationship" + fam_memb + "' required> </div> </div>")
+            $("#family_memb").append("<div class='row mt-5' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-10 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> Family Members </label> </div> </div> <div class='col-2 col-md-2 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Name<label class='form-label error' id='addName_error" + fam_memb + "'></label></label> <input type='text' onkeyup='addNamevalidation(" + fam_memb + ",this.value)' name='fam_name" + fam_memb + "' class='form-control' id='fam_name" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Date Of Birth</label> <input type='date' name='fam_dob" + fam_memb + "' class='form-control' id='fam_dob" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Gender</label><br> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='success" + fam_memb + "-outlined' value='Male' autocomplete='off' checked> <label class='btn btn-outline-secondary' for='success" + fam_memb + "-outlined' style='width: 40%;'>Male </label> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='danger" + fam_memb + "-outlined' value='Female' autocomplete='off'> <label class='btn btn-outline-secondary' for='danger" + fam_memb + "-outlined' style='width: 40%;'> Female </label> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Relationship<label class='form-label error' id='addRelationship_error" + fam_memb + "'></label></label> <input type='text' onkeyup='addRelationshipvalidation(" + fam_memb + ",this.value)' name='fam_relationship" + fam_memb + "' class='form-control' id='fam_relationship" + fam_memb + "' required> </div> </div>")
             document.cookie = "fam_members" + fam_memb + "=" + fam_memb;
             document.cookie = "fam_members_count=" + fam_memb;
         })

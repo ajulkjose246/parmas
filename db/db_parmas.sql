@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 11:03 AM
+-- Generation Time: Mar 12, 2023 at 06:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -92,6 +92,32 @@ CREATE TABLE `tbl_announcement` (
 
 INSERT INTO `tbl_announcement` (`id`, `content`, `image`, `status`) VALUES
 (1, 'നാൽപ്പതുമണി ആരാധന\n2022 ഏപ്രിൽ 22, 23, 24 തീയതികളിൽ\n\n', '2022-11-17.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_family_members`
+--
+
+CREATE TABLE `tbl_family_members` (
+  `fam_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fam_name` varchar(50) NOT NULL,
+  `fam_dob` varchar(30) NOT NULL,
+  `fam_gender` varchar(10) NOT NULL,
+  `fam_relationship` varchar(50) NOT NULL,
+  `onCreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `onUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_family_members`
+--
+
+INSERT INTO `tbl_family_members` (`fam_id`, `user_id`, `fam_name`, `fam_dob`, `fam_gender`, `fam_relationship`, `onCreated`, `onUpdate`) VALUES
+(28, 26, 'anna pops', '2023-03-03', 'Female', 'Sister', '2023-03-12 08:41:54', '2023-03-12 17:27:09'),
+(29, 26, 'Alphin', '2023-03-07', 'Male', 'Brother', '2023-03-12 09:46:46', '2023-03-12 13:38:01'),
+(39, 26, 'Sona', '2023-03-07', 'Male', 'Sister', '2023-03-12 11:27:38', '2023-03-12 13:38:05');
 
 -- --------------------------------------------------------
 
@@ -224,7 +250,8 @@ INSERT INTO `tbl_login` (`log_id`, `usr_id`, `usr_email`, `usr_password`, `reset
 (23, 23, 'dins6221a@gmail.com', 'Dins@2022', NULL, 3, '2023-03-02 17:27:49', '2023-03-02 17:27:49'),
 (24, 24, 'erickjames4512@gmail.com', 'Erick@2023', NULL, 3, '2023-03-02 17:29:30', '2023-03-02 17:29:30'),
 (25, 25, 'arongeorgejain2025@mca.ajce.in', 'Aron@2023', NULL, 3, '2023-03-02 17:32:24', '2023-03-02 17:32:24'),
-(26, 26, 'ajulkjose2025@mca.ajce.in', 'Ajul@2023', NULL, 3, '2023-03-03 03:30:35', '2023-03-03 03:34:07');
+(26, 26, 'ajulkjose2025@mca.ajce.in', 'Ajul@2023', NULL, 3, '2023-03-03 03:30:35', '2023-03-03 03:34:07'),
+(27, 27, 'sonaannajoseph@gmail.com', 'Sona@2023', NULL, 3, '2023-03-11 12:14:22', '2023-03-11 12:14:22');
 
 -- --------------------------------------------------------
 
@@ -308,7 +335,8 @@ INSERT INTO `tbl_register` (`usr_id`, `usr_fname`, `usr_sname`, `usr_email`, `us
 (23, 'Dins', ' Jacob Varghese', 'dins6221a@gmail.com', '8157990867', 'Thomas', '5', 'athul.jpg', 'Kallassariparambil1', '2023-03-02 17:27:49', '2023-03-02 18:07:57'),
 (24, 'Erick', 'James', 'erickjames4512@gmail.com', '8592978534', NULL, NULL, NULL, 'Thevalathil', '2023-03-02 17:29:30', '2023-03-02 17:29:30'),
 (25, 'Aron', 'George Jain', 'arongeorgejain2025@mca.ajce.in', '7559936759', NULL, NULL, NULL, 'Ayikunnathu', '2023-03-02 17:32:24', '2023-03-02 17:32:24'),
-(26, 'Ajul', 'K Jose', 'ajulkjose2025@mca.ajce.in', '8078234246', NULL, NULL, NULL, 'Kallarackal', '2023-03-03 03:30:35', '2023-03-03 03:30:35');
+(26, 'Ajul', ' K Jose', 'ajulkjose2025@mca.ajce.in', '8078515324', 'Philip', '2', 'alphin.jpg', 'Kallarackal', '2023-03-03 03:30:35', '2023-03-12 17:29:11'),
+(27, 'Sona', 'Joseph', 'sonaannajoseph@gmail.com', '9876543212', NULL, NULL, NULL, 'Athikkal', '2023-03-11 12:14:22', '2023-03-11 12:14:22');
 
 --
 -- Indexes for dumped tables
@@ -331,6 +359,12 @@ ALTER TABLE `tbl_administration_position`
 --
 ALTER TABLE `tbl_announcement`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_family_members`
+--
+ALTER TABLE `tbl_family_members`
+  ADD PRIMARY KEY (`fam_id`);
 
 --
 -- Indexes for table `tbl_family_unit`
@@ -403,6 +437,12 @@ ALTER TABLE `tbl_announcement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_family_members`
+--
+ALTER TABLE `tbl_family_members`
+  MODIFY `fam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
 -- AUTO_INCREMENT for table `tbl_family_unit`
 --
 ALTER TABLE `tbl_family_unit`
@@ -430,7 +470,7 @@ ALTER TABLE `tbl_kcym_position`
 -- AUTO_INCREMENT for table `tbl_login`
 --
 ALTER TABLE `tbl_login`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_offering`
@@ -448,7 +488,7 @@ ALTER TABLE `tbl_payment`
 -- AUTO_INCREMENT for table `tbl_register`
 --
 ALTER TABLE `tbl_register`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
