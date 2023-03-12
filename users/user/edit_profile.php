@@ -26,10 +26,11 @@ $uid = $user['usr_id'];
             <div class="row profile">
                 <div class="col-md-3">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/parmas/index.php">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">My Profile</li>
-                        </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/parmas/index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="profile.php">Profile</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+                    </ol>
                     </nav>
 
                     <div class="profile-sidebar">
@@ -58,18 +59,13 @@ $uid = $user['usr_id'];
                                 <li>
                                     <a href="edit_family_members.php">
                                         <i class="glyphicon glyphicon-user"></i>
-                                        Add Family Members </a>
+                                        Family Members </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <i class="glyphicon glyphicon-ok"></i>
-                                        Tasks sssss</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="glyphicon glyphicon-flag"></i>
-                                        Help sssssssssss</a>
-                                </li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Privacy</a>
+                            </li>
                             </ul>
                         </div>
                         <!-- END MENU -->

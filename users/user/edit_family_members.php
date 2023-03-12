@@ -30,6 +30,7 @@ $user_id = $user['usr_id'];
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/parmas/index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="family_members.php">Members</a></li>
                         <li class="breadcrumb-item active" aria-current="page">My Profile</li>
                     </ol>
                 </nav>
@@ -51,24 +52,19 @@ $user_id = $user['usr_id'];
                     <div class="profile-usermenu">
                         <ul class="nav">
                             <li>
-                                <a href="profile.php">
+                                <a href="edit_profile.php">
                                     <i class="glyphicon glyphicon-home"></i>
                                     Overview </a>
                             </li>
                             <li class="active">
-                                <a href="family_members.php">
+                                <a href="edit_family_members.php">
                                     <i class="glyphicon glyphicon-user"></i>
                                     Family Members</a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasksssss</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help sssssssssss</a>
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Privacy</a>
                             </li>
                         </ul>
                     </div>
@@ -96,14 +92,14 @@ $user_id = $user['usr_id'];
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                                        <input type="text" class="form-control" name="fam_name<?= $i ?>" value="<?= $row['fam_name'] ?>">
+                                                        <label for="exampleFormControlInput1" class="form-label">Name <label class="form-label error" id="n_error<?= $i ?>"></label></label>
+                                                        <input type="text" class="form-control" onkeyup="namevalidation(<?= $i ?>,this.value)" name="fam_name<?= $i ?>" value="<?= $row['fam_name'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Date Of Birth</label>
-                                                        <input type="date" class="form-control" name="fam_dob<?= $i ?>" value="<?= $row['fam_dob'] ?>">
+                                                        <input type="date" class="form-control" max="<?php echo date("Y-m-d"); ?>" id="upd_dob<?= $i ?>" name="fam_dob<?= $i ?>" value="<?= $row['fam_dob'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6" style="display: none;">
@@ -111,19 +107,19 @@ $user_id = $user['usr_id'];
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Gender</label>
-                                                        <input type="text" class="form-control" name="fam_gender<?= $i ?>" value="<?= $row['fam_gender'] ?>">
+                                                        <label for="exampleFormControlInput1" class="form-label">Gender <label class="form-label error" id="g_error<?= $i ?>"></label></label>
+                                                        <input type="text" class="form-control" onkeyup="gendervalidation(<?= $i ?>,this.value)" id="upd_gender<?= $i ?>" name="fam_gender<?= $i ?>" value="<?= $row['fam_gender'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Relationship</label>
-                                                        <input type="text" class="form-control" name="fam_relationship<?= $i ?>" value="<?= $row['fam_relationship'] ?>">
+                                                        <label for="exampleFormControlInput1" class="form-label">Relationship<label class="form-label error" id="r_error<?= $i ?>"></label></label>
+                                                        <input type="text" class="form-control" onkeyup="relationshipvalidation(<?= $i ?>,this.value)" id="upd_relationship<?= $i ?>" name="fam_relationship<?= $i ?>" value="<?= $row['fam_relationship'] ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-12">
                                                     <div class="mb-3 text-center">
-                                                        <input type="submit" class="btn btn-success" name="famUpldBtn<?= $i ?>" value="Update">
+                                                        <input type="submit" class="btn btn-success" id="famUpldBtn<?= $i ?>" name="famUpldBtn<?= $i ?>" value="Update">
                                                         <a href="remove_family_members.php?id=<?= $row['fam_id'] ?>" class="btn btn-danger" name="famUpldBtn<?= $i ?>">Delete</a>
                                                     </div>
                                                 </div>
@@ -159,14 +155,14 @@ $user_id = $user['usr_id'];
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                                    <input type="text" class="form-control" name="fam_name1" id="exampleFormControlInput1">
+                                                    <label for="exampleFormControlInput1" class="form-label">Name <label class="form-label error" id="addName_error1"></label></label>
+                                                    <input type="text" class="form-control" onkeyup="addNamevalidation(1,this.value)" name="fam_name1" id="fam_name1" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="mb-3">
                                                     <label for="exampleFormControlInput1" class="form-label">Date Of Birth</label>
-                                                    <input type="date" class="form-control" name="fam_dob1" id="exampleFormControlInput1">
+                                                    <input type="date" class="form-control" max="<?php echo date("Y-m-d"); ?>" name="fam_dob1" id="fam_dob1" required>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
@@ -181,8 +177,8 @@ $user_id = $user['usr_id'];
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Relationship</label>
-                                                    <input type="text" class="form-control" name="fam_relationship1" id="exampleFormControlInput1">
+                                                    <label for="exampleFormControlInput1" class="form-label">Relationship <label class="form-label error" id="addRelationship_error1"></label></label>
+                                                    <input type="text" class="form-control" onkeyup="addRelationshipvalidation(1,this.value)" name="fam_relationship1" id="fam_relationship1" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,7 +186,7 @@ $user_id = $user['usr_id'];
                                     <div class="col-12 col-md-12">
                                         <div class="mb-3 text-center">
                                             <!-- <div class="mt-5 text-right"> -->
-                                            <input type="submit" class="btn btn-success" name="famUpldBtn" value="Add">
+                                            <input type="submit" class="btn btn-success" id="addBtn" name="famUpldBtn" value="Add">
                                             <a href="family_members.php" class="btn btn-danger" name="famUpldBtn">Cancel</a>
                                         </div>
                                     </div>
@@ -206,7 +202,7 @@ $user_id = $user['usr_id'];
 
 </body>
 <?php
-// echo("<script>alert('$i')</script>");
+echo ("<script>let no_members =$i </script>");
 for ($j = 1; $j <= $i; $j++) {
     if (isset($_POST['famUpldBtn' . $j])) {
         $fam_name = $_POST['fam_name' . $j];
@@ -228,7 +224,7 @@ for ($j = 1; $j <= $i; $j++) {
     $(document).ready(function() {
         $("#add_member").click(function() {
             fam_memb++
-            $("#family_memb").append("<div class='row mt-5' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-10 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> Family Members </label> </div> </div> <div class='col-2 col-md-2 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Name</label> <input type='text' name='fam_name" + fam_memb + "' class='form-control' id='exampleFormControlInput1'> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Date Of Birth</label> <input type='date' name='fam_dob" + fam_memb + "' class='form-control' id='exampleFormControlInput1'> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Gender</label><br> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='success" + fam_memb + "-outlined' value='Male' autocomplete='off' checked> <label class='btn btn-outline-secondary' for='success" + fam_memb + "-outlined' style='width: 40%;'>Male </label> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='danger" + fam_memb + "-outlined' value='Female' autocomplete='off'> <label class='btn btn-outline-secondary' for='danger" + fam_memb + "-outlined' style='width: 40%;'> Female </label> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Relationship</label> <input type='text' name='fam_relationship" + fam_memb + "' class='form-control' id='exampleFormControlInput1'> </div> </div>")
+            $("#family_memb").append("<div class='row mt-5' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-10 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> Family Members </label> </div> </div> <div class='col-2 col-md-2 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Name<label class='form-label error' id='addName_error"+fam_memb+"'></label></label> <input type='text' onkeyup='addNamevalidation(" + fam_memb + ",this.value)' name='fam_name" + fam_memb + "' class='form-control' id='fam_name" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Date Of Birth</label> <input type='date' name='fam_dob" + fam_memb + "' class='form-control' id='fam_dob" + fam_memb + "' required> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Gender</label><br> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='success" + fam_memb + "-outlined' value='Male' autocomplete='off' checked> <label class='btn btn-outline-secondary' for='success" + fam_memb + "-outlined' style='width: 40%;'>Male </label> <input type='radio' class='btn-check' name='gender" + fam_memb + "' id='danger" + fam_memb + "-outlined' value='Female' autocomplete='off'> <label class='btn btn-outline-secondary' for='danger" + fam_memb + "-outlined' style='width: 40%;'> Female </label> </div> </div> <div class='col-12 col-md-6'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>Relationship<label class='form-label error' id='addRelationship_error"+fam_memb+"'></label></label> <input type='text' onkeyup='addRelationshipvalidation(" + fam_memb + ",this.value)' name='fam_relationship" + fam_memb + "' class='form-control' id='fam_relationship" + fam_memb + "' required> </div> </div>")
             document.cookie = "fam_members" + fam_memb + "=" + fam_memb;
             document.cookie = "fam_members_count=" + fam_memb;
         })
@@ -268,5 +264,102 @@ if (isset($_POST['famUpldBtn'])) {
     echo ("<script>location.href='$url'</script>");
 }
 ?>
+<script>
+    var r_name = true,
+        r_gender = true,
+        r_relationship = true;
+
+    function namevalidation(id, name) {
+        var c_name = /^[a-z ]{3,}$/i;
+        r_name = c_name.test(name)
+        if (!r_name) {
+            $("#n_error" + id).text("Enter a valid Name");
+            $("#famUpldBtn" + id).prop('disabled', true);
+        } else {
+            $("#n_error" + id).text("");
+            validUpdData(id)
+
+        }
+    }
+
+    function gendervalidation(id, gender) {
+        var c_gender = /.*?((?:fe)?male).*/i;
+        r_gender = c_gender.test(gender)
+        if (!r_gender) {
+            $("#g_error" + id).text("Enter a valid Gender");
+            $("#famUpldBtn" + id).prop('disabled', true);
+        } else {
+            $("#g_error" + id).text("");
+            validUpdData(id)
+
+        }
+    }
+
+    function relationshipvalidation(id, relationship) {
+        var c_relationship = /^[a-z ]{3,}$/i;
+        r_relationship = c_relationship.test(relationship)
+        if (!r_relationship) {
+            $("#r_error" + id).text("Enter a valid Relationship");
+            $("#famUpldBtn" + id).prop('disabled', true);
+        } else {
+            $("#r_error" + id).text("");
+            validUpdData(id)
+
+        }
+    }
+
+    function validUpdData(id) {
+        if (r_relationship == true && r_gender == true && r_name == true) {
+            $("#famUpldBtn" + id).prop('disabled', false);
+        }
+    }
+    // fam_name" + fam_memb + "
+    // fam_dob" + fam_memb + "
+    // fam_relationship" + fam_memb + "
+
+    // fam_name1
+    // fam_dob1
+    // fam_relationship1
+
+    // upd_gender
+    // upd_dob
+    // upd_name
+    // upd_relationship1
+</script>
+<script>
+    var r_name, r_relationship;
+
+    function addNamevalidation(id, name) {
+        var c_name = /^[a-z ]{3,}$/i;
+        r_name = c_name.test(name)
+        if (!r_name) {
+            $("#addName_error" + id).text("Enter a valid Name");
+            $("#addBtn").prop('disabled', true);
+        } else {
+            $("#addName_error" + id).text("");
+            validAddData(id)
+
+        }
+    }
+
+    function addRelationshipvalidation(id, relationship) {
+        var c_relationship = /^[a-z ]{3,}$/i;
+        r_relationship = c_relationship.test(relationship)
+        if (!r_relationship) {
+            $("#addRelationship_error" + id).text("Enter a valid Relationship");
+            $("#addBtn").prop('disabled', true);
+        } else {
+            $("#addRelationship_error" + id).text("");
+            validAddData(id)
+
+        }
+    }
+
+    function validAddData(id) {
+        if (r_name == true && r_relationship == true) {
+            $("#addBtn").prop('disabled', false);
+        }
+    }
+</script>
 
 </html>

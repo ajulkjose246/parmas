@@ -19,6 +19,11 @@ $user_id = $user['usr_id'];
     <link rel="stylesheet" href="/parmas/assets/css/cdn/fontawesome.css">
 
     <link rel="stylesheet" href="/parmas/assets/css/profile.css">
+    <style>
+        input{
+            cursor: context-menu!important;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,13 +65,8 @@ $user_id = $user['usr_id'];
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasksssss</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help sssssssssss</a>
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Privacy</a>
                             </li>
                         </ul>
                     </div>

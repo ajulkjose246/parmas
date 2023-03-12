@@ -113,3 +113,6 @@ body {
   .breadcrumb{
     background-color: #fff;
   }
+.nav li{
+  width: 100% !important;
+}

@@ -17,6 +17,11 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/parmas/assets/css/cdn/fontawesome.css">
 
     <link rel="stylesheet" href="/parmas/assets/css/profile.css">
+    <style>
+        input{
+            cursor: context-menu!important;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,14 +63,10 @@ $user = $_SESSION['user'];
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasksssss</a>
+                                    <i class="glyphicon glyphicon-cog"></i>
+                                    Privacy</a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help sssssssssss</a>
-                            </li>
+
                         </ul>
                     </div>
                     <!-- END MENU -->
