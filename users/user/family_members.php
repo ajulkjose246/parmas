@@ -80,40 +80,40 @@ $user_id = $user['usr_id'];
                                 <form action="#" method="POST">
                                     <div id="family_memb">
                                         <?php
-                                        $i=0;
+                                        $i = 0;
                                         $sql = "SELECT * FROM `tbl_family_members` WHERE `user_id` =$user_id";
                                         $result = mysqli_query($con, $sql);
                                         while ($row = mysqli_fetch_array($result)) {
-                                            $i=$i+1;
-                                             ?>
+                                            $i = $i + 1;
+                                        ?>
                                             <div class="row mb-5">
                                                 <div class="col-10 col-md-10 col-lg-11">
                                                     <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label"> Family Members - <?=$i?></label>
+                                                        <label for="exampleFormControlInput1" class="form-label"> Family Members - <?= $i ?></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                                        <input type="text" class="form-control" value="<?=$row['fam_name']?>" disabled>
+                                                        <input type="text" class="form-control" value="<?= $row['fam_name'] ?>" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Date Of Birth</label>
-                                                        <input type="date" class="form-control" value="<?=$row['fam_dob']?>" disabled>
+                                                        <input type="date" class="form-control" value="<?= $row['fam_dob'] ?>" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Gender</label>
-                                                        <input type="text" class="form-control" value="<?=$row['fam_gender']?>" disabled>
+                                                        <input type="text" class="form-control" value="<?= $row['fam_gender'] ?>" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-label">Relationship</label>
-                                                        <input type="text" class="form-control" value="<?=$row['fam_relationship']?>" disabled>
+                                                        <input type="text" class="form-control" value="<?= $row['fam_relationship'] ?>" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,8 +121,10 @@ $user_id = $user['usr_id'];
                                         }
                                         ?>
                                     </div>
-                                    <div class="mt-5 text-right">
-                                        <a href="edit_family_members.php" class="btn btn-success" name="famUpldBtn">Update</a>
+                                    <div class="col-12 col-md-12">
+                                        <div class="mb-3 text-center">
+                                            <a href="edit_family_members.php" class="btn btn-success" name="famUpldBtn">Update Details</a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
