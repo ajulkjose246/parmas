@@ -9,8 +9,8 @@ $user = $_SESSION['user'];
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
     $url = "/parmas/users/admin/admin_home.php";
-      echo ("<script>location.href='$url'</script>");
-}elseif($usr_status == 2){
+    echo ("<script>location.href='$url'</script>");
+} elseif ($usr_status == 2) {
     $url = "/parmas/users/secretary/sec_home.php";
     echo ("<script>location.href='$url'</script>");
 }
@@ -30,6 +30,7 @@ if ($usr_status == 1) {
     <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap.min.css">
     <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap-icons.css">
     <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- gallery -->
     <link rel="stylesheet" href="/parmas/assets/css/cdn/baguetteBox.min.css">
     <link rel="stylesheet" href="/parmas/assets/css/style.css">
@@ -39,15 +40,12 @@ if ($usr_status == 1) {
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="#page-top"><img src="/parmas/assets/img/logo.png" alt=""> PARMAS</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="nav-link" href="/parmas/index.php">Home</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">About Us</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/parmas/pages/administration.php">Administration</a></li>
                             <li><a class="dropdown-item" href="/parmas/pages/kcym.php">KCYM</a></li>
@@ -58,8 +56,7 @@ if ($usr_status == 1) {
                     <li class="nav-item"><a class="nav-link" href="/parmas/pages/liveTV.php">Live TV</a></li>
                     <li class="nav-item"><a class="nav-link" href="/parmas/pages/offerings.php">Offerings</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Services</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
                             <li><a class="dropdown-item" href="#">Wedding</a></li>
@@ -71,15 +68,12 @@ if ($usr_status == 1) {
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <?php if ($user['usr_profile'] == null) { ?>
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="/parmas/assets/img/user.png" width="40" height="40" class="rounded-circle">
                             </a>
                         <?php } else { ?>
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="/parmas/assets/img/profile/<?= $user['usr_profile'] ?>" width="40" height="40"
-                                    class="rounded-circle">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="/parmas/assets/img/profile/<?= $user['usr_profile'] ?>" width="40" height="40" class="rounded-circle">
                             </a>
                         <?php } ?>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -52,14 +52,14 @@ $user = $_SESSION['user'];
                                     Overview </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="family_members.php">
                                     <i class="glyphicon glyphicon-user"></i>
-                                    Account Settings </a>
+                                    Family Members</a>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <a href="#">
                                     <i class="glyphicon glyphicon-ok"></i>
-                                    Tasks sssss</a>
+                                    Tasksssss</a>
                             </li>
                             <li>
                                 <a href="#">

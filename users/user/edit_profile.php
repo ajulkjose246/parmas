@@ -58,10 +58,10 @@ $uid = $user['usr_id'];
                                 <li>
                                     <a href="#">
                                         <i class="glyphicon glyphicon-user"></i>
-                                        Account Settings </a>
+                                        Add Family Members </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="#">
                                         <i class="glyphicon glyphicon-ok"></i>
                                         Tasks sssss</a>
                                 </li>
