@@ -61,11 +61,11 @@ $user_id = $user['usr_id'];
                                     <i class="glyphicon glyphicon-user"></i>
                                     Family Members</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Privacy</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

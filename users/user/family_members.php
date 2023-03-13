@@ -70,7 +70,7 @@ $user_id = $user['usr_id'];
                                     Family Members</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="privacy.php">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Privacy</a>
                             </li>
