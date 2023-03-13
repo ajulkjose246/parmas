@@ -76,7 +76,7 @@ if ($usr_id == null) {
               </div>
               <div class="col-12 px-md-5 px-4 mt-3">
                 <button id="paymentBtn" onclick="pay_now(<?= $row['offer_price'] ?>,<?= $row['offer_id'] ?>,<?= $usr_id ?>)" class="btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></button>
-                <!-- <a type="submit" class="paymentBtn btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></a> -->
+                <a href="/parmas/pages/offerings.php" class="paymentBtn btn btn-danger w-100 mt-2">Cancel</a>
               </div>
             </div>
           <!-- </form> -->
