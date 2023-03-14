@@ -11,9 +11,16 @@ if(isset($_POST['amt']) && isset($_POST['name']) && isset($_POST['usr_id']) && i
     $_SESSION['OID']=mysqli_insert_id($con);
 }
 
-if(isset($_POST['payment_id']) && isset($_SESSION['OID'])){
+if(isset($_POST['payment_id']) && isset($_SESSION['OID']) && isset($_POST['usr_id']) && isset($_POST['usr_email']) && isset($_POST['offer_msg']) && isset($_POST['name']) && isset($_POST['payDate'])){
     $pay_id=$_SESSION['OID'];
+    $usr_id=$_POST['usr_id'];
+    $usr_email=$_POST['usr_email'];
+    $offer_msg=$_POST['offer_msg'];
+    $offer_name=$_POST['name'];
+    $payDate=$_POST['payDate'];
+    $date=date('d-m-Y', $payDate);
     $payment_id=$_POST['payment_id'];
     mysqli_query($con,"UPDATE `tbl_payment` SET `payment_status`='Success',`payment_id`='$payment_id' WHERE `id` =$pay_id");
+    mysqli_query($con,"INSERT INTO `tbl_user_offering`(`usr_id`, `usr_email`, `usr_intentions`, `offer_date`,`offer_id`) VALUES ('$usr_id','$usr_email','$offer_msg','$date','$offer_name')");
 }
 ?>

@@ -6,6 +6,11 @@ session_start();
 
 require("../../connection/db_connect.php");
 $user = $_SESSION['user'];
+$user_id = $user['usr_id'];
+
+$sql="SELECT SUM(`amount`) AS total_offer FROM `tbl_payment` WHERE `user_id`=$user_id";
+$result=mysqli_query($con,$sql);
+$row=mysqli_fetch_array($result);
 ?>
 
 <head>
@@ -15,11 +20,12 @@ $user = $_SESSION['user'];
     <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="/parmas/assets/css/cdn/fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <link rel="stylesheet" href="/parmas/assets/css/profile.css">
     <style>
-        input{
-            cursor: context-menu!important;
+        input {
+            cursor: context-menu !important;
         }
     </style>
 </head>
@@ -75,6 +81,24 @@ $user = $_SESSION['user'];
             <div class="col-md-9">
                 <div class="profile-content">
                     <div class="col-xxl-12 mb-5 mb-xxl-0">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body" style="margin-left: 5%;">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                    Total Offerings</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: large;">₹ <?=$row['total_offer']?></div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fa-solid fa-indian-rupee-sign  fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                             <div class="row g-3">
                                 <h4 class="mb-4 mt-0">Contact detail</h4>

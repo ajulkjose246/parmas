@@ -10,7 +10,6 @@ if ($usr_id == null) {
   echo ("<script>location.href='/parmas/pages/offerings.php'</script>");
 } else {
   $offer_id = $_GET['id'];
-
   $sql = "SELECT * FROM `tbl_payment` WHERE `offer_type` = $offer_id AND `payment_status` != 'Pending'";
   $result = mysqli_query($con, $sql);
   $i = 0;
@@ -97,10 +96,12 @@ if ($usr_id == null) {
     if (uid != null) {
       if (offer_msg == true && offer_date == true && r_email == true) {
         var datepicker = $("#datepicker").val()
+        var usr_email = $("#usr_email").val()
+        var msg = $("#offer_msg").val()
         jQuery.ajax({
           type: "post",
           url: "payment_process.php",
-          data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid + "&payDate="+datepicker,
+          data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid + "&payDate=" + datepicker,
           success: function(result) {
             var options = {
               key: "rzp_test_UY1y7bu0apmIK4",
@@ -113,7 +114,7 @@ if ($usr_id == null) {
                 jQuery.ajax({
                   type: "post",
                   url: "payment_process.php",
-                  data: "payment_id=" + response.razorpay_payment_id + "&amt=" + amt + "&name=" + name + "&usr_id=" + uid,
+                  data: "payment_id=" + response.razorpay_payment_id + "&name=" + name + "&usr_id=" + uid + "&usr_email=" +usr_email + "&offer_msg=" +msg + "&payDate=" + datepicker,
                   success: function(result) {
                     window.location.href = "offerings.php";
                   },

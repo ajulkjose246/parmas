@@ -49,6 +49,11 @@ if ($usr_status == 1) {
                         <i class="fa-solid fa-users"></i>
                         <span>Administration</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="offering_details.php">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Offering Details</span></a>
+                </li>
                 <hr class="sidebar-divider d-none d-md-block">
             </ul>
             <div id="content-wrapper" class="d-flex flex-column">
