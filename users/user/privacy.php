@@ -37,8 +37,7 @@ $uid = $user['usr_id'];
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/parmas/index.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="profile.php">Profile</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+                        <li class="breadcrumb-item active" aria-current="page">Privacy</li>
                     </ol>
                 </nav>
 

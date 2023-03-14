@@ -11,7 +11,7 @@ if ($usr_id == null) {
 } else {
   $offer_id = $_GET['id'];
 
-  $sql = "SELECT * FROM `tbl_payment` WHERE `offer_type` = $offer_id";
+  $sql = "SELECT * FROM `tbl_payment` WHERE `offer_type` = $offer_id AND `payment_status` != 'Pending'";
   $result = mysqli_query($con, $sql);
   $i = 0;
   echo ("<script>const disable_date = [];</script>");
@@ -57,28 +57,28 @@ if ($usr_id == null) {
           </ul>
 
           <!-- <form action="#" method="POST"> -->
-            <div class="row">
-              <div class="col-12">
-                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Email <label class="form-label error" id="e_error"></label></span>
-                  <div class="inputWithIcon"> <input class="form-control" id="usr_email" type="email" required></div>
-                </div>
-              </div>
-              <div class="col-md-11">
-                <div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4"> <span>Offering<span class="ps-1">Date <label class="form-label error" id="d_error"></label></span></span>
-                  <div class="inputWithIcon"> <input type="text" class="form-control" id="datepicker" required></div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Please List out all your Holy Mass Intentions One by One <label class="form-label error" id="o_error"></label></span>
-                  <div class="inputWithIcon"> <input type="text" id="offer_msg" class="form-control" rows="2"></div>
-                </div>
-              </div>
-              <div class="col-12 px-md-5 px-4 mt-3">
-                <button id="paymentBtn" onclick="pay_now(<?= $row['offer_price'] ?>,<?= $row['offer_id'] ?>,<?= $usr_id ?>)" class="btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></button>
-                <a href="/parmas/pages/offerings.php" class="paymentBtn btn btn-danger w-100 mt-2">Cancel</a>
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Email <label class="form-label error" id="e_error"></label></span>
+                <div class="inputWithIcon"> <input class="form-control" id="usr_email" type="email" required></div>
               </div>
             </div>
+            <div class="col-md-11">
+              <div class="d-flex flex-column ps-md-5 px-md-0 px-4 mb-4"> <span>Offering<span class="ps-1">Date <label class="form-label error" id="d_error"></label></span></span>
+                <div class="inputWithIcon"> <input type="text" name="datepicker" class="form-control" id="datepicker" required></div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="d-flex flex-column px-md-5 px-4 mb-4"> <span>Please List out all your Holy Mass Intentions One by One <label class="form-label error" id="o_error"></label></span>
+                <div class="inputWithIcon"> <input type="text" id="offer_msg" class="form-control" rows="2"></div>
+              </div>
+            </div>
+            <div class="col-12 px-md-5 px-4 mt-3">
+              <button id="paymentBtn" onclick="pay_now(<?= $row['offer_price'] ?>,<?= $row['offer_id'] ?>,<?= $usr_id ?>)" class="btn btn-primary w-100">Pay ₹<?= $row['offer_price'] ?></button>
+              <a href="/parmas/pages/offerings.php" class="paymentBtn btn btn-danger w-100 mt-2">Cancel</a>
+            </div>
+          </div>
           <!-- </form> -->
         </div>
       </div>
@@ -94,40 +94,41 @@ if ($usr_id == null) {
 ?>
 <script>
   function pay_now(amt, name, uid) {
-  if (uid != null) {
-    if (offer_msg == true && offer_date == true && r_email == true) {
-      jQuery.ajax({
-        type: "post",
-        url: "payment_process.php",
-        data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid,
-        success: function (result) {
-          var options = {
-            key: "rzp_test_UY1y7bu0apmIK4",
-            amount: amt * 100,
-            currency: "INR",
-            name: "PARMAS",
-            description: name,
-            image:
-              "https://raw.githubusercontent.com/ajulkjose246/parmas/master/assets/img/logo.png",
-            handler: function (response) {
-              jQuery.ajax({
-                type: "post",
-                url: "payment_process.php",
-                data: "payment_id=" + response.razorpay_payment_id +"amt=" + amt + "&name=" + name + "&usr_id=" + uid,
-                success: function (result) {
-                  window.location.href = "offerings.php";
-                },
-              });
-            },
-          };
-          var rzp1 = new Razorpay(options);
-          rzp1.open();
-        },
-      });
+    if (uid != null) {
+      if (offer_msg == true && offer_date == true && r_email == true) {
+        var datepicker = $("#datepicker").val()
+        jQuery.ajax({
+          type: "post",
+          url: "payment_process.php",
+          data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid + "&payDate="+datepicker,
+          success: function(result) {
+            var options = {
+              key: "rzp_test_UY1y7bu0apmIK4",
+              amount: amt * 100,
+              currency: "INR",
+              name: "PARMAS",
+              description: name,
+              image: "https://raw.githubusercontent.com/ajulkjose246/parmas/master/assets/img/logo.png",
+              handler: function(response) {
+                jQuery.ajax({
+                  type: "post",
+                  url: "payment_process.php",
+                  data: "payment_id=" + response.razorpay_payment_id + "&amt=" + amt + "&name=" + name + "&usr_id=" + uid,
+                  success: function(result) {
+                    window.location.href = "offerings.php";
+                  },
+                });
+              },
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+          },
+        });
+      }
+    } else {
+      alert("Pls login");
     }
-  } else {
-    alert("Pls login");
   }
-}
 </script>
+
 </html>
