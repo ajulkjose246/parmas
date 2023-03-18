@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2023 at 06:02 PM
+-- Generation Time: Mar 18, 2023 at 04:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -92,6 +92,63 @@ CREATE TABLE `tbl_announcement` (
 
 INSERT INTO `tbl_announcement` (`id`, `content`, `image`, `status`) VALUES
 (1, 'നാൽപ്പതുമണി ആരാധന\n2022 ഏപ്രിൽ 22, 23, 24 തീയതികളിൽ\n\n', '2022-11-17.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_death_relief_fund`
+--
+
+CREATE TABLE `tbl_death_relief_fund` (
+  `drf_id` int(11) NOT NULL,
+  `drf_name` varchar(200) NOT NULL,
+  `drf_houseName` varchar(200) NOT NULL,
+  `drf_dob` varchar(200) NOT NULL,
+  `drf_ward` varchar(20) NOT NULL,
+  `drf_phone` varchar(11) NOT NULL,
+  `drf_gender` varchar(10) NOT NULL,
+  `drf_address` varchar(300) NOT NULL,
+  `drf_currentAddress` varchar(300) NOT NULL,
+  `drf_nomineeName` varchar(30) NOT NULL,
+  `drf_nomineeDob` varchar(10) NOT NULL,
+  `drf_nomineeRelationshp` varchar(30) NOT NULL,
+  `drf_minor` varchar(30) NOT NULL,
+  `drf_createdOn` timestamp NOT NULL DEFAULT current_timestamp(),
+  `drf_updatedOn` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_death_relief_fund`
+--
+
+INSERT INTO `tbl_death_relief_fund` (`drf_id`, `drf_name`, `drf_houseName`, `drf_dob`, `drf_ward`, `drf_phone`, `drf_gender`, `drf_address`, `drf_currentAddress`, `drf_nomineeName`, `drf_nomineeDob`, `drf_nomineeRelationshp`, `drf_minor`, `drf_createdOn`, `drf_updatedOn`) VALUES
+(1, 'Bibin P Daniel', 'Planthotathil', '2023-03-16', 'Kaa', '9188794758', 'option1', 'Bibin P Daniel', 'Bibin P Daniel', 'Gokul K ', '2023-03-11', 'Friend', ' Ajul K Jose', '2023-03-17 09:02:12', '2023-03-17 09:02:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_drf_family_members`
+--
+
+CREATE TABLE `tbl_drf_family_members` (
+  `drf_member_id` int(11) NOT NULL,
+  `drf_id` int(11) NOT NULL,
+  `drf_member_name` varchar(50) NOT NULL,
+  `drf_member_dob` varchar(20) NOT NULL,
+  `drf_member_gender` varchar(20) NOT NULL,
+  `drf_member_fam_relation` varchar(50) NOT NULL,
+  `drf_member_fam_remarks` varchar(300) NOT NULL,
+  `drf_member_onCreate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `drf_member_onUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_drf_family_members`
+--
+
+INSERT INTO `tbl_drf_family_members` (`drf_member_id`, `drf_id`, `drf_member_name`, `drf_member_dob`, `drf_member_gender`, `drf_member_fam_relation`, `drf_member_fam_remarks`, `drf_member_onCreate`, `drf_member_onUpdate`) VALUES
+(1, 1, 'Erick', '2023-03-09', 'option1', 'Friend', 'pottan', '2023-03-17 09:02:12', '2023-03-17 09:02:12'),
+(2, 1, 'Alphin', '2023-03-16', 'option1', 'Friend', 'Mandan', '2023-03-17 09:02:12', '2023-03-17 09:02:12');
 
 -- --------------------------------------------------------
 
@@ -299,15 +356,13 @@ CREATE TABLE `tbl_payment` (
 --
 
 INSERT INTO `tbl_payment` (`id`, `amount`, `payment_status`, `payment_id`, `payment_date`, `user_id`, `offer_type`) VALUES
-(50, 150, 'Success', '', '28-3-2023', 15, 1),
-(79, 150, 'Pending', '', '6-4-2023', 26, 1),
-(81, 100, 'Success', 'pay_LRQGILfOQ4VRTd', '18-3-2023', 26, 2),
-(82, 100, 'Success', 'pay_LRQL03fFoWE7xG', '22-3-2023', 26, 2),
-(83, 150, 'Pending', '', '25-3-2023', 26, 1),
-(84, 150, 'Pending', '', '20-3-2023', 26, 1),
-(85, 150, 'Success', 'pay_LRSPIL3PuRYb1i', '19-3-2023', 26, 1),
-(86, 150, 'Success', 'pay_LRSUFjlZDr1Upg', '16-3-2023', 26, 1),
-(87, 150, 'Pending', '', '17-3-2023', 26, 1);
+(102, 150, 'Pending', '', '16-3-2023', 26, 1),
+(103, 150, 'Success', 'pay_LRkANbTyJznAPJ', '16-3-2023', 26, 1),
+(104, 150, 'Success', 'pay_LRkBOcTThnLTP7', '1-4-2023', 26, 1),
+(105, 150, 'Success', 'pay_LRkPBEVoYj92T6', '22-3-2023', 27, 1),
+(106, 150, 'Pending', '', '17-3-2023', 26, 1),
+(107, 150, 'Pending', '', '17-3-2023', 26, 1),
+(108, 150, 'Pending', '', '17-3-2023', 26, 1);
 
 -- --------------------------------------------------------
 
@@ -341,7 +396,7 @@ INSERT INTO `tbl_register` (`usr_id`, `usr_fname`, `usr_sname`, `usr_email`, `us
 (23, 'Dins', ' Jacob Varghese', 'dins6221a@gmail.com', '8157990867', 'Thomas', '5', 'athul.jpg', 'Kallassariparambil1', '2023-03-02 17:27:49', '2023-03-02 18:07:57'),
 (24, 'Erick', 'James', 'erickjames4512@gmail.com', '8592978534', NULL, NULL, NULL, 'Thevalathil', '2023-03-02 17:29:30', '2023-03-02 17:29:30'),
 (25, 'Aron', 'George Jain', 'arongeorgejain2025@mca.ajce.in', '7559936759', NULL, NULL, NULL, 'Ayikunnathu', '2023-03-02 17:32:24', '2023-03-02 17:32:24'),
-(26, 'Ajul K', ' Jose', 'ajulkjose2025@mca.ajce.in', '8078234246', 'Thomas', '3', 'SAVE_20211203_213835.jpg', 'Kallarackal', '2023-03-03 03:30:35', '2023-03-14 09:23:58'),
+(26, 'Amal', ' K Jose', 'ajulkjose2025@mca.ajce.in', '8078515324', 'Philip', '2', 'SAVE_20211203_213835.jpg', 'Jallara', '2023-03-03 03:30:35', '2023-03-16 13:28:25'),
 (27, 'Sona', 'Joseph', 'sonaannajoseph@gmail.com', '9876543212', NULL, NULL, NULL, 'Athikkal', '2023-03-11 12:14:22', '2023-03-11 12:14:22');
 
 -- --------------------------------------------------------
@@ -364,7 +419,9 @@ CREATE TABLE `tbl_user_offering` (
 --
 
 INSERT INTO `tbl_user_offering` (`id`, `usr_id`, `usr_email`, `usr_intentions`, `offer_id`, `offer_date`) VALUES
-(2, 26, 'haxike3551@rolenot.com', 'aaa', 1, '16-3-2023');
+(3, 26, 'ajulkjose2025@mca.ajce.in', 'Test', 1, '16-3-2023'),
+(4, 26, 'ajulkjose2025@mca.ajce.in', 'Test', 1, '1-4-2023'),
+(5, 27, 'sonaannajoseph@gmail.com', 'Test', 1, '22-3-2023');
 
 --
 -- Indexes for dumped tables
@@ -387,6 +444,18 @@ ALTER TABLE `tbl_administration_position`
 --
 ALTER TABLE `tbl_announcement`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_death_relief_fund`
+--
+ALTER TABLE `tbl_death_relief_fund`
+  ADD PRIMARY KEY (`drf_id`);
+
+--
+-- Indexes for table `tbl_drf_family_members`
+--
+ALTER TABLE `tbl_drf_family_members`
+  ADD PRIMARY KEY (`drf_member_id`);
 
 --
 -- Indexes for table `tbl_family_members`
@@ -471,6 +540,18 @@ ALTER TABLE `tbl_announcement`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_death_relief_fund`
+--
+ALTER TABLE `tbl_death_relief_fund`
+  MODIFY `drf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_drf_family_members`
+--
+ALTER TABLE `tbl_drf_family_members`
+  MODIFY `drf_member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_family_members`
 --
 ALTER TABLE `tbl_family_members`
@@ -516,7 +597,7 @@ ALTER TABLE `tbl_offering`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `tbl_register`
@@ -528,7 +609,7 @@ ALTER TABLE `tbl_register`
 -- AUTO_INCREMENT for table `tbl_user_offering`
 --
 ALTER TABLE `tbl_user_offering`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
