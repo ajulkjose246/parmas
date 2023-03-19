@@ -28,36 +28,38 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                         <h3 class="text-center mb-4" style="font-weight: 1000;">ചെറുപുഷ്‌പ മരണസഹായ നിധി</h3>
                         <h5 class="text-center mb-4" style="font-weight: 600;">ലിറ്റിൽ ഫ്ളവർ ചർച്ച്, കടുവാക്കുളം</h5>
                         <hr>
-                        <form class="form-card" method="POST" action="upld_death_relief_fund.php">
+                        <form class="form-card akjFval" method="POST" action="upld_death_relief_fund.php">
                             <div class="row">
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥന്റെ ഔദ്യോഗിക പേര് </label> <label class="error" id="nameError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="fname" id="fname" required>
+                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥന്റെ ഔദ്യോഗിക പേര് </label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid name" name="fname" id="fname" required></input>
+
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label><label class="error" id="houseError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="hname" id="hname" required>
+                                        <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid House Name" name="hname" id="hname" required>
                                     </div>
+                                    
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
-                                        <input type="date" class="form-control" name="dob" id="dob" required>
+                                        <input type="date" class="form-control " name="dob" id="dob" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബകൂട്ടായ്മ വാർഡ്</label> <label class="error" id="wardUnitError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="wardUnit" id="wardUnit" required>
+                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബകൂട്ടായ്മ വാർഡ്</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Ward Name" name="wardUnit" id="wardUnit" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">ഫോൺ നമ്പർ</label><label class="error" id="phoneError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="phone" id="phone" required>
+                                        <label for="exampleFormControlInput1" class="form-label">ഫോൺ നമ്പർ</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[6-9]\d{9}$" ErrMsg="Enter a Valid Phone Number" name="phone" id="phone" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
@@ -76,13 +78,13 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                                 <div class="col-12 col-md-6">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">ഇപ്പോഴത്തെ വിലാസം</label>
-                                        <textarea class="form-control" name="address" id="address" rows="2" required></textarea>
+                                        <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Address" name="address" id="address" rows="2" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">സ്ഥിരമായ വിലാസം</label>
-                                        <textarea class="form-control" name="currentAddress" id="currentAddress" rows="2" required></textarea>
+                                        <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Address" name="currentAddress" id="currentAddress" rows="2" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -90,8 +92,8 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                             <div class="row">
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">നോമിനിയുടെ പേര്</label><label class="error" id="nomineeNameError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="nomineeName" id="nomineeName" required>
+                                        <label for="exampleFormControlInput1" class="form-label">നോമിനിയുടെ പേര്</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid name" name="nomineeName" id="nomineeName" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
@@ -102,14 +104,14 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥനുമായുള്ള ബന്ധം</label><label class="error" id="nomineeRelationshipError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="nomineeRelationshp" id="nomineeRelationshp" required>
+                                        <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥനുമായുള്ള ബന്ധം</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Relatoinship" name="nomineeRelationshp" id="nomineeRelationshp" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-lg-4">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">മൈനർ ആണെങ്കിൽ ബന്ധപ്പെടേണ്ട അടുത്ത വ്യക്തി</label><label class="error" id="minorError" class="form-label"></label>
-                                        <input type="text" class="form-control" name="minor" id="minor" required>
+                                        <label for="exampleFormControlInput1" class="form-label">മൈനർ ആണെങ്കിൽ ബന്ധപ്പെടേണ്ട അടുത്ത വ്യക്തി</label>
+                                        <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid name" name="minor" id="minor" required>
                                     </div>
                                 </div>
                             </div>
@@ -128,19 +130,19 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-3">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">ഔദ്യോഗിക പേര്</label><label class="error" id="fam_nameError1" class="form-label"></label>
+                                            <label for="exampleFormControlInput1" class="form-label">ഔദ്യോഗിക പേര്</label>
                                             <input type="text" class="form-control" name="fam_name1" onkeyup="fam_name_validate(1,this.value)" id="fam_name1">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-3">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label><label class="error" id="fam_dobError1" class="form-label"></label>
+                                            <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
                                             <input type="date" class="form-control" name="fam_dob1" id="fam_dob1">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-3">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label mb-3">ലിംഗഭേദം</label><label class="error" id="fam_genderError" class="form-label"></label><br>
+                                            <label for="exampleFormControlInput1" class="form-label mb-3">ലിംഗഭേദം</label><br>
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="fam_gender1" id="inlineRadio1" value="option1" checked>
@@ -154,13 +156,13 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-3">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥനുമായുള്ള ബന്ധം</label><label class="error" id="fam_relationError1" class="form-label"></label>
+                                            <label for="exampleFormControlInput1" class="form-label">കുടുംബനാഥനുമായുള്ള ബന്ധം</label>
                                             <input type="text" class="form-control" name="fam_relation1" onkeyup="fam_relation_validate(1,this.value)" id="fam_relation1">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-12">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">റിമാർക്‌സ് </label><label class="error" id="fam_remarksError1" class="form-label"></label>
+                                            <label for="exampleFormControlInput1" class="form-label">റിമാർക്‌സ് </label>
                                             <textarea class="form-control" rows="2" name="fam_remarks1" onkeyup="fam_remarks_validate(1,this.value)" id="fam_remarks1"></textarea>
                                         </div>
                                     </div>
@@ -200,15 +202,15 @@ for ($i = 2; $i <= $fam_members_count; $i++) {
     </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/parmas/assets/js/death_relief_fund.js"></script>
 <script>
     $(document).ready(function() {
         var fam_memb = 1
         $("#add_member").click(function() {
             fam_memb++
-            $("#family_memb").append("<div class='row' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-11 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> മറ്റു കുടുംബാംഗങ്ങൾ </label> </div> </div> <div class='col-2 col-md-1 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>ഔദ്യോഗിക പേര്</label> <label class='error' id='fam_nameError"+fam_memb+"' class='form-label'></label><input  type='text' class='form-control' onkeyup='fam_name_validate("+fam_memb+",this.value)'  name='fam_name" + fam_memb + "' id='fam_name" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>ജനന തീയതി</label> <input type='date' class='form-control' name='fam_dob" + fam_memb + "' id='fam_dob" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label mb-3'>ലിംഗഭേദം</label><br> <div class='form-check form-check-inline'> <input class='form-check-input' type='radio' name='fam_gender" + fam_memb + "' id='inlineRadio1' value='option1'> <label class='form-check-label' for='inlineRadio1'>പുരുഷൻ</label> </div> <div class='form-check form-check-inline'> <input class='form-check-input' type='radio' name='fam_gender" + fam_memb + "' id='inlineRadio2' value='option2'> <label class='form-check-label' for='inlineRadio2'>സ്‌ത്രീ</label> </div> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>കുടുംബനാഥനുമായുള്ള ബന്ധം</label><label class='error' id='fam_relationError"+fam_memb+"' class='form-label'></label> <input type='text' onkeyup='fam_relation_validate("+fam_memb+",this.value)' class='form-control' name='fam_relation" + fam_memb + "' id='fam_relation" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-12'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>റിമാർക്‌സ് </label><label class='error' id='fam_remarksError"+fam_memb+"' class='form-label'></label> <textarea onkeyup='fam_remarks_validate("+fam_memb+",this.value)' class='form-control' name='fam_remarks" + fam_memb + "' id='fam_remarks" + fam_memb + "' rows='2'></textarea> </div> </div> </div>")
+            $("#family_memb").append("<div class='row' id='fam_memb_" + fam_memb + "'> <div class='col-10 col-md-11 col-lg-11'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'> മറ്റു കുടുംബാംഗങ്ങൾ </label> </div> </div> <div class='col-2 col-md-1 col-lg-1'> <div class='mb-3 '> <button class='btn btn-danger' onclick='remove_education_fields(" + fam_memb + ");'><i class='bi bi-x-circle'></i></button> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>ഔദ്യോഗിക പേര്</label> <label class='error' id='fam_nameError" + fam_memb + "' class='form-label'></label><input  type='text' class='form-control' onkeyup='fam_name_validate(" + fam_memb + ",this.value)'  name='fam_name" + fam_memb + "' id='fam_name" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>ജനന തീയതി</label> <input type='date' class='form-control' name='fam_dob" + fam_memb + "' id='fam_dob" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label mb-3'>ലിംഗഭേദം</label><br> <div class='form-check form-check-inline'> <input class='form-check-input' type='radio' name='fam_gender" + fam_memb + "' id='inlineRadio1' value='option1'> <label class='form-check-label' for='inlineRadio1'>പുരുഷൻ</label> </div> <div class='form-check form-check-inline'> <input class='form-check-input' type='radio' name='fam_gender" + fam_memb + "' id='inlineRadio2' value='option2'> <label class='form-check-label' for='inlineRadio2'>സ്‌ത്രീ</label> </div> </div> </div> <div class='col-12 col-md-6 col-lg-3'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>കുടുംബനാഥനുമായുള്ള ബന്ധം</label><label class='error' id='fam_relationError" + fam_memb + "' class='form-label'></label> <input type='text' onkeyup='fam_relation_validate(" + fam_memb + ",this.value)' class='form-control' name='fam_relation" + fam_memb + "' id='fam_relation" + fam_memb + "'> </div> </div> <div class='col-12 col-md-6 col-lg-12'> <div class='mb-3'> <label for='exampleFormControlInput1' class='form-label'>റിമാർക്‌സ് </label><label class='error' id='fam_remarksError" + fam_memb + "' class='form-label'></label> <textarea onkeyup='fam_remarks_validate(" + fam_memb + ",this.value)' class='form-control' name='fam_remarks" + fam_memb + "' id='fam_remarks" + fam_memb + "' rows='2'></textarea> </div> </div> </div>")
             document.cookie = "death_relief_fam_members" + fam_memb + "=" + fam_memb;
             document.cookie = "death_relief_fam_members_count=" + fam_memb;
         })
