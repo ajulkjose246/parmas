@@ -1,9 +1,5 @@
 <?php
 require("../connection/db_connect.php");
-if (isset($_POST['subBtn'])) {
-
-    // user details
-
     $fname = $_POST['fname'];
     $hname = $_POST['hname'];
     $dob = $_POST['dob'];
@@ -58,4 +54,3 @@ if (isset($_POST['subBtn'])) {
     }
     echo ("<script>alert('Success')</script>");
     echo ("<script>location.href='/parmas/pages/death_relief_fund.php'</script>");
-}
