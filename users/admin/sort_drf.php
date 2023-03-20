@@ -13,15 +13,18 @@ if ($result) {
             <th>DOB</th>
             <th>Ward</th>
             <th>Phone</th>
+            <th>Print</th>
         </tr>
         <?php
-        while ($row = mysqli_fetch_array($result)) {?>
+        while ($row = mysqli_fetch_array($result)) {
+            $id=$row['drf_id']?>
             <tr>
                 <td><?= $row['drf_name'] ?></td>
                 <td><?= $row['drf_houseName'] ?></td>
                 <td><?= $row['drf_dob'] ?></td>
                 <td><?= $row['drf_ward'] ?></td>
                 <td><?= $row['drf_phone'] ?></td>
+                <td><a href="drf_user_data_pdf.php?id=<?=$id?>" target="_blank" class="btn btn-primary"><i class="bi bi-printer"></i> Print</a></td>
             </tr>
     <?php
         }

@@ -94,8 +94,8 @@ $html = '<html>
 require_once '../../dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
-
 $dompdf = new Dompdf();
+
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A3');
 $dompdf->render();
