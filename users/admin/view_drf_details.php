@@ -30,7 +30,7 @@ if ($usr_status == 1) {
         </style>
     </head>
 
-    <body id="page-top">
+    <body id="page-top" onload="dateSort_offer_details()">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -137,7 +137,11 @@ if ($usr_status == 1) {
 ?>
 <script>
     function dateSort_offer_details() {
+
         var search = $("#search").val()
+        if(search==null){
+            search =" "
+        }
         $.ajax({
             url: "sort_drf.php",
             method: "post",
