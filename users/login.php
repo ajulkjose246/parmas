@@ -7,7 +7,7 @@ error_reporting(E_ERROR | E_PARSE);
 $uid = $_SESSION['user']['usr_id'];
 require("../connection/db_connect.php");
 if ($uid != null) {
-  $url = "index.php";
+  $url = "/parmas/index.php";
   echo ("<script>location.href='$url'</script>");
 } else { ?>
 
@@ -66,31 +66,14 @@ if ($uid != null) {
         </div>
       </div>
     </section>
-    <button type="button" style="display: none;" id="succesBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    </button>
+    <?php
+    require("../pages/modal.php");
+    ?>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
+    <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-        <div class="modal-body">
-                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_Yk0pxWYfo6.json" background="transparent" speed="1" style=" height: 200px;" loop autoplay></lottie-player>
-                <h5 class="text-center">Login Success</h5>
-                <h6 class="text-center">(Automatically reload the page)</h6>
-            </div>
-          <div class="modal-footer">
-            <a href="/parmas/index.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-  <!-- JavaScript Bundle with Popper -->
-  <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
-  <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
-
-<?php
+  <?php
   if (isset($_POST['signin'])) {
 
     $usr_email = $_POST['email'];
@@ -103,20 +86,17 @@ if ($uid != null) {
           $_SESSION['user'] = $row;
           $_SESSION['usr_password'] = $usr_pwd;
           if ($row['usr_status'] == 1) {
-
-            $url = "/parmas/users/admin/admin_home.php";
-            echo ("<script>location.href='$url'</script>");
+            echo ("<script>modal_message(1,'Login Success','/parmas/users/admin/admin_home.php')</script>");
           } elseif ($row['usr_status'] == 2) {
-            $url = "/parmas/users/secretary/sec_home.php";
-            echo ("<script>location.href='$url'</script>");
+            echo ("<script>modal_message(1,'Login Success','/parmas/users/secretary/sec_home.php')</script>");
           } elseif ($row['usr_status'] == 3) {
-            echo ("<script>document.getElementById('succesBtn').click();setTimeout(function() {document.getElementById('clsBtn').click();}, 3000);</script>");
+            echo ("<script>modal_message(1,'Login Success','/parmas/index.php')</script>");
           }
         }
       }
     }
   }
 }
-?>
+  ?>
 
 </html>

@@ -8,9 +8,9 @@ require("../../connection/db_connect.php");
 $user = $_SESSION['user'];
 $user_id = $user['usr_id'];
 
-$sql="SELECT SUM(`amount`) AS total_offer FROM `tbl_payment` WHERE `user_id`=$user_id AND `payment_status` != 'Pending'";
-$result=mysqli_query($con,$sql);
-$row=mysqli_fetch_array($result);
+$sql = "SELECT SUM(`amount`) AS total_offer FROM `tbl_payment` WHERE `user_id`=$user_id AND `payment_status` != 'Pending'";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
 ?>
 
 <head>
@@ -89,7 +89,7 @@ $row=mysqli_fetch_array($result);
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Total Offerings</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: large;">₹ <?=$row['total_offer']?></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: large;">₹ <?= $row['total_offer'] ?></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fa-solid fa-indian-rupee-sign  fa-2x text-gray-300"></i>
@@ -97,6 +97,25 @@ $row=mysqli_fetch_array($result);
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                                <a href="#">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body" style="margin-left: 5%;">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                        Pay
+                                                        <h5>Death Relief Fund</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fa-solid fa-indian-rupee-sign  fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="bg-secondary-soft px-4 py-5 rounded">

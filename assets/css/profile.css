@@ -335,3 +335,6 @@ body {
 .text-gray-800 {
   color: #5a5c69!important;
 }
+a{
+  text-decoration: none !important;
+}

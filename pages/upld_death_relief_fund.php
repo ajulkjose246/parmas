@@ -12,7 +12,7 @@
                 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                 <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_Yk0pxWYfo6.json" background="transparent" speed="1" style=" height: 200px;" loop autoplay></lottie-player>
                 <h5 class="text-center">Registration Success</h5>
-                <h6 class="text-center">(Automatically reload the page)</h6>
+                <h6 class="text-center">(Automatically redirect the page)</h6>
             </div>
             <div class="modal-footer">
                 <a href="/parmas/pages/death_relief_fund.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
@@ -22,7 +22,9 @@
 </div>
 
 <?php
+session_start();
 require("../connection/db_connect.php");
+$uid = $_SESSION['user']['usr_id'];
 $fname = $_POST['fname'];
 $hname = $_POST['hname'];
 $dob = $_POST['dob'];
@@ -39,8 +41,8 @@ $nomineeDob = $_POST['nomineeDob'];
 $nomineeRelationshp = $_POST['nomineeRelationshp'];
 $minor = $_POST['minor'];
 
-$sql = "INSERT INTO `tbl_death_relief_fund`(`drf_name`, `drf_houseName`, `drf_dob`, `drf_ward`, `drf_phone`, `drf_gender`, `drf_address`, `drf_currentAddress`, `drf_nomineeName`, `drf_nomineeDob`, `drf_nomineeRelationshp`, `drf_minor`) 
-        VALUES ('$fname','$hname','$dob','$wardUnit','$phone','$gender','$address','$currentAddress','$nomineeName','$nomineeDob','$nomineeRelationshp',' $minor')";
+$sql = "INSERT INTO `tbl_death_relief_fund`(`drf_user_id`,`drf_name`, `drf_houseName`, `drf_dob`, `drf_ward`, `drf_phone`, `drf_gender`, `drf_address`, `drf_currentAddress`, `drf_nomineeName`, `drf_nomineeDob`, `drf_nomineeRelationshp`, `drf_minor`) 
+        VALUES ($uid,'$fname','$hname','$dob','$wardUnit','$phone','$gender','$address','$currentAddress','$nomineeName','$nomineeDob','$nomineeRelationshp',' $minor')";
 $result = mysqli_query($con, $sql);
 $drf_id = mysqli_insert_id($con);
 

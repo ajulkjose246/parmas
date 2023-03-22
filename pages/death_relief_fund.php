@@ -3,6 +3,7 @@
 <?php
 session_start();
 error_reporting(E_ERROR | E_PARSE);
+require("../connection/db_connect.php");
 $uid = $_SESSION['user']['usr_id'];
 
 ?>
@@ -208,30 +209,10 @@ $uid = $_SESSION['user']['usr_id'];
             </div>
         </section>
     <?php
-    } else { ?>
-        <button type="button" style="display: none;" id="succesBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                        <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_mlsj6yqm.json" background="transparent" speed="1" style=" height: 200px;" loop autoplay></lottie-player>
-                        <h5 class="text-center">You don't have permission to view this page Please Login </h5>
-                        <h6 class="text-center">(Automatically reload the page)</h6>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="/parmas/index.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-    <?php
-}
+    } else {
+        require("../pages/modal.php");
+        echo("<script>modal_message(2,'You dont have permission to view this page Please Login','/parmas/index.php')</script>");
+    }
     ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -259,9 +240,5 @@ $uid = $_SESSION['user']['usr_id'];
         $("#benefits").html("")
     })
 </script>
-<script>document.getElementById('succesBtn').click()
-setTimeout(
-    function() {
-        document.getElementById('clsBtn').click();
-    }, 3000);</script>
+
 </html>
