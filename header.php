@@ -6,10 +6,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 require("connection/db_connect.php");
 $user = $_SESSION['user'];
-$uid = $_SESSION['user']['usr_id'];
-if($uid==null){
-    $uid=0;
-}
+
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
     $url = "/parmas/users/admin/admin_home.php";
@@ -62,16 +59,8 @@ if ($usr_status == 1) {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                         <ul class="dropdown-menu">
-                            <?php
-                            $sql = "SELECT * FROM `tbl_death_relief_fund` WHERE `drf_user_id` =$uid ";
-                            $result = mysqli_query($con, $sql);
-                            $num = mysqli_num_rows($result);
-                            if ($num > 0) { ?>
-                                <li><a class="dropdown-item" href="#">View Death Relief Fund</a></li>
-                            <?php } else{
-                             ?>
-                                <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
-                            <?php } ?>
+
+                            <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
                             <li><a class="dropdown-item" href="#">Wedding</a></li>
                         </ul>
                     </li>

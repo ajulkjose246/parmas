@@ -99,7 +99,7 @@ $row = mysqli_fetch_array($result);
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-3 mb-4">
-                                <a href="#">
+                                <a href="/parmas/users/user/view_death_relief_fund.php">
                                     <div class="card border-left-primary shadow h-100 py-2">
                                         <div class="card-body" style="margin-left: 5%;">
                                             <div class="row no-gutters align-items-center">

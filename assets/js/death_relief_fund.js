@@ -8,6 +8,7 @@ $(document).on("keyup", ".akjval", function () {
     var ErrMsg = $(this).attr("ErrMsg");
     $(this).after('<label class="error">' + ErrMsg + "</label>").next(".error");
   }
+  updateSubmitButton();
 });
 
 $(document).on("submit", ".akjFval", function (e) {
@@ -24,9 +25,17 @@ $(document).on("submit", ".akjFval", function (e) {
       el.insertAdjacentElement("afterend", err);
     }
   });
+  updateSubmitButton();
   console.log(isOkey);
   if (isOkey) {
     this.submit();
     return isOkey;
   }
 });
+
+function updateSubmitButton() {
+  let form = $(".akjFval");
+  let submitButton = form.find("input[type='button']");
+  let formIsValid = form.find(".error").length === 0;
+  submitButton.prop("disabled", !formIsValid);
+}
