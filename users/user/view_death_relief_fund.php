@@ -43,7 +43,7 @@ $uid = $_SESSION['user']['usr_id'];
                 <input type="text" class="form-control akjval" RegExp="(50\d|5[1-9]\d|[6-9]\d{2}|[1-4]\d{3}|5000)" ErrMsg="Enter a Valid Amount or Min 500" id="payAmt">
               </div>
               <div class="d-grid gap-2 col-12 mx-auto">
-                <input class="btn btn-success" onclick="pay_now()" id="payBtn" type="button" value="Pay Now" disabled>
+                <input class="btn btn-success" onclick="pay_now(<?= $uid ?>)" id="payBtn" type="button" value="Pay Now" disabled>
               </div>
             </form>
           </div>
@@ -56,18 +56,19 @@ $uid = $_SESSION['user']['usr_id'];
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
                 </tr>
               </thead>
+              <?php $result = mysqli_query($con, "SELECT * FROM `tbl_drf_payments` WHERE `drf_user_id` =$uid");$c=0; ?>
               <tbody>
+                <?php while($row=mysqli_fetch_array($result)){ $c=$c+1; ?>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <th scope="row"><?=$c ?></th>
+                  <td><?=$row['drf_amount']?></td>
+                  <td><?=$row['onCreate']?></td>
                 </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -82,19 +83,14 @@ $uid = $_SESSION['user']['usr_id'];
 <script src="/parmas/assets/js/death_relief_fund.js"></script>
 <script src="/parmas/assets/js/cdn/checkout.js"></script>
 <script>
-
-  function pay_now() {
+  function pay_now(uid) {
     var amt = $("#payAmt").val();
-    var name = "akj";
-    var uid = 3;
-    var datepicker = "23-08-2024";
-    var usr_email = "akj@gmail.cim";
-    var msg = "d"
     jQuery.ajax({
       type: "post",
-      url: "../../pages/payment_process.php",
-      data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid + "&payDate=" + datepicker,
+      url: "drf_payment.php",
+      data: "amt=" + amt + "&usr_id=" + uid,
       success: function(result) {
+        console.log(result)
         var options = {
           key: "rzp_test_UY1y7bu0apmIK4",
           amount: amt * 100,
@@ -105,10 +101,11 @@ $uid = $_SESSION['user']['usr_id'];
           handler: function(response) {
             jQuery.ajax({
               type: "post",
-              url: "../../pages/payment_process.php",
-              data: "payment_id=" + response.razorpay_payment_id + "&name=" + name + "&usr_id=" + uid + "&usr_email=" + usr_email + "&offer_msg=" + msg + "&payDate=" + datepicker,
+              url: "drf_payment.php",
+              data: "payment_id=" + response.razorpay_payment_id + "&usr_id=" + uid + "&amt=" + amt,
               success: function(result) {
-                window.location.href = "offerings.php";
+                console.log(result)
+                window.location.href = "view_death_relief_fund.php";
               },
             });
           },
