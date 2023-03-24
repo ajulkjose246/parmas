@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2023 at 04:59 AM
+-- Generation Time: Mar 23, 2023 at 03:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -101,6 +101,7 @@ INSERT INTO `tbl_announcement` (`id`, `content`, `image`, `status`) VALUES
 
 CREATE TABLE `tbl_death_relief_fund` (
   `drf_id` int(11) NOT NULL,
+  `drf_user_id` int(11) NOT NULL,
   `drf_name` varchar(200) NOT NULL,
   `drf_houseName` varchar(200) NOT NULL,
   `drf_dob` varchar(200) NOT NULL,
@@ -121,8 +122,8 @@ CREATE TABLE `tbl_death_relief_fund` (
 -- Dumping data for table `tbl_death_relief_fund`
 --
 
-INSERT INTO `tbl_death_relief_fund` (`drf_id`, `drf_name`, `drf_houseName`, `drf_dob`, `drf_ward`, `drf_phone`, `drf_gender`, `drf_address`, `drf_currentAddress`, `drf_nomineeName`, `drf_nomineeDob`, `drf_nomineeRelationshp`, `drf_minor`, `drf_createdOn`, `drf_updatedOn`) VALUES
-(1, 'Bibin P Daniel', 'Planthotathil', '2023-03-16', 'Kaa', '9188794758', 'option1', 'Bibin P Daniel', 'Bibin P Daniel', 'Gokul K ', '2023-03-11', 'Friend', ' Ajul K Jose', '2023-03-17 09:02:12', '2023-03-17 09:02:12');
+INSERT INTO `tbl_death_relief_fund` (`drf_id`, `drf_user_id`, `drf_name`, `drf_houseName`, `drf_dob`, `drf_ward`, `drf_phone`, `drf_gender`, `drf_address`, `drf_currentAddress`, `drf_nomineeName`, `drf_nomineeDob`, `drf_nomineeRelationshp`, `drf_minor`, `drf_createdOn`, `drf_updatedOn`) VALUES
+(1, 26, 'Bibin P Daniel', 'Planthotathil', '2023-03-16', 'Kaa', '9188794758', 'option1', 'Bibin P Daniel', 'Bibin P Daniel', 'Gokul K ', '2023-03-11', 'Friend', ' Ajul K Jose', '2023-03-17 09:02:12', '2023-03-23 13:51:38');
 
 -- --------------------------------------------------------
 
@@ -149,6 +150,28 @@ CREATE TABLE `tbl_drf_family_members` (
 INSERT INTO `tbl_drf_family_members` (`drf_member_id`, `drf_id`, `drf_member_name`, `drf_member_dob`, `drf_member_gender`, `drf_member_fam_relation`, `drf_member_fam_remarks`, `drf_member_onCreate`, `drf_member_onUpdate`) VALUES
 (1, 1, 'Erick', '2023-03-09', 'option1', 'Friend', 'pottan', '2023-03-17 09:02:12', '2023-03-17 09:02:12'),
 (2, 1, 'Alphin', '2023-03-16', 'option1', 'Friend', 'Mandan', '2023-03-17 09:02:12', '2023-03-17 09:02:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_drf_payments`
+--
+
+CREATE TABLE `tbl_drf_payments` (
+  `drf_id` int(11) NOT NULL,
+  `drf_user_id` int(11) NOT NULL,
+  `drf_amount` varchar(40) NOT NULL,
+  `onCreate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `onUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_drf_payments`
+--
+
+INSERT INTO `tbl_drf_payments` (`drf_id`, `drf_user_id`, `drf_amount`, `onCreate`, `onUpdate`) VALUES
+(1, 26, '600', '2023-03-23 13:36:46', '2023-03-23 13:36:46'),
+(2, 26, '700', '2023-03-23 13:42:48', '2023-03-23 13:42:48');
 
 -- --------------------------------------------------------
 
@@ -360,9 +383,8 @@ INSERT INTO `tbl_payment` (`id`, `amount`, `payment_status`, `payment_id`, `paym
 (103, 150, 'Success', 'pay_LRkANbTyJznAPJ', '16-3-2023', 26, 1),
 (104, 150, 'Success', 'pay_LRkBOcTThnLTP7', '1-4-2023', 26, 1),
 (105, 150, 'Success', 'pay_LRkPBEVoYj92T6', '22-3-2023', 27, 1),
-(106, 150, 'Pending', '', '17-3-2023', 26, 1),
-(107, 150, 'Pending', '', '17-3-2023', 26, 1),
-(108, 150, 'Pending', '', '17-3-2023', 26, 1);
+(156, 600, 'Success', 'pay_LUz6G35h7DGfag', '23-3-2023', 26, 0),
+(158, 700, 'Success', 'pay_LUzCdzPafKnnJL', '23-3-2023', 26, 0);
 
 -- --------------------------------------------------------
 
@@ -456,6 +478,12 @@ ALTER TABLE `tbl_death_relief_fund`
 --
 ALTER TABLE `tbl_drf_family_members`
   ADD PRIMARY KEY (`drf_member_id`);
+
+--
+-- Indexes for table `tbl_drf_payments`
+--
+ALTER TABLE `tbl_drf_payments`
+  ADD PRIMARY KEY (`drf_id`);
 
 --
 -- Indexes for table `tbl_family_members`
@@ -552,6 +580,12 @@ ALTER TABLE `tbl_drf_family_members`
   MODIFY `drf_member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_drf_payments`
+--
+ALTER TABLE `tbl_drf_payments`
+  MODIFY `drf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_family_members`
 --
 ALTER TABLE `tbl_family_members`
@@ -597,7 +631,7 @@ ALTER TABLE `tbl_offering`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT for table `tbl_register`

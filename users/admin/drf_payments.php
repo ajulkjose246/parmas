@@ -20,17 +20,11 @@ if ($usr_status == 1) {
         <link rel="stylesheet" href="/parmas/assets/css/cdn/fontawesome.css">
         <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap.min.css">
         <link rel="stylesheet" href="/parmas/assets/css/cdn/sb-admin-2.min.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-        <style>
-            #datepicker {
-                cursor: pointer;
-            }
-        </style>
     </head>
 
-    <body id="page-top" onload="dateSort_offer_details()">
+    <body id="page-top">
         <div id="wrapper">
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -92,14 +86,12 @@ if ($usr_status == 1) {
                         </div>
                         <div class="row">
                             <div class="col-lg-12 mb-4">
+                                <!-- Illustrations -->
                                 <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
+                                <div class="card-header py-3">
                                         <div class="row">
                                             <div class="col-8">
-                                                <h6 class="m-0 font-weight-bold text-primary">View Details</h6>
-                                            </div>
-                                            <div class="col-2">
-                                                <a href="drf_payments.php" class="btn btn-primary"><i class="bi bi-credit-card-fill"></i> View Payments</a>
+                                                <h6 class="m-0 font-weight-bold text-primary">Payment Details</h6>
                                             </div>
                                             <div class="col-2">
                                                 <a href="drf_users_pdf.php" target="_blank" class="btn btn-primary"><i class="bi bi-printer"></i> Print Full Details</a>
@@ -107,7 +99,14 @@ if ($usr_status == 1) {
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <input type="text" class="form-control" autocomplete="off" placeholder="Search" id="search" onkeyup="dateSort_offer_details()">
+                                        <select id="kcym_year" onchange="kcym_sort_year()" class="form-control">
+                                            <?php
+                                            $result = mysqli_query($con, "SELECT DISTINCT(YEAR(`onCreate`)) AS year FROM `tbl_drf_payments`");
+                                            while ($row = mysqli_fetch_array($result)) { ?>
+                                                <option value="<?= $row['year'] ?>"><?= $row['year'] ?></option>
+                                            <?php
+                                            } ?>
+                                        </select>
                                         <div id="result"></div>
                                     </div>
                                 </div>
@@ -130,7 +129,6 @@ if ($usr_status == 1) {
         <script src="/parmas/assets/js/cdn/popper.min.js"></script>
         <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
         <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     </body>
 <?php
 } else {
@@ -139,17 +137,17 @@ if ($usr_status == 1) {
 }
 ?>
 <script>
-    function dateSort_offer_details() {
+    $(document).ready(function() {
+        kcym_sort_year();
+    })
 
-        var search = $("#search").val()
-        if(search==null){
-            search =" "
-        }
+    function kcym_sort_year() {
+        var year = $('#kcym_year').find(":selected").val();
         $.ajax({
-            url: "sort_drf.php",
+            url: "sort_drf_payments.php",
             method: "post",
             data: {
-                search: search
+                year: year
             },
             success: function(data) {
                 $('#result').html(data);
@@ -157,6 +155,5 @@ if ($usr_status == 1) {
         });
     }
 </script>
-
 
 </html>

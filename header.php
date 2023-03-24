@@ -6,6 +6,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 require("connection/db_connect.php");
 $user = $_SESSION['user'];
+$uid = $_SESSION['user']['usr_id'];
 
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
@@ -59,8 +60,20 @@ if ($usr_status == 1) {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
                         <ul class="dropdown-menu">
+                            <?php
+                            if ($uid != null) {
+                                $result = mysqli_query($con, "SELECT * FROM `tbl_death_relief_fund` WHERE `drf_user_id` =$uid");
+                                $num = mysqli_num_rows($result);
+                                if ($num > 0) { ?>
+                                    <li><a class="dropdown-item" href="/parmas/users/user/view_death_relief_fund.php">View Death Relief Fund</a></li>
 
-                            <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
+                                <?php } else { ?>
+                                    <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
+                                <?php }
+                            } else { ?>
+                                <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
+                            <?php  }
+                            ?>
                             <li><a class="dropdown-item" href="#">Wedding</a></li>
                         </ul>
                     </li>

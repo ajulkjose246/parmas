@@ -33,7 +33,7 @@ $uid = $_SESSION['user']['usr_id'];
             </nav>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="card">
             <h5 class="text-center">Pay Now</h5>
             <hr>
@@ -48,7 +48,7 @@ $uid = $_SESSION['user']['usr_id'];
             </form>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
           <div class="card">
             <h5 class="text-center">Payment History</h5>
             <hr>
