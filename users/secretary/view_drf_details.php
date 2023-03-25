@@ -21,7 +21,7 @@ if ($usr_status == 2) {
         <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap.min.css">
         <link rel="stylesheet" href="/parmas/assets/css/cdn/sb-admin-2.min.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
         <style>
             #datepicker {
@@ -30,7 +30,7 @@ if ($usr_status == 2) {
         </style>
     </head>
 
-    <body id="page-top">
+    <body id="page-top" onload="dateSort_offer_details()">
         <div id="wrapper">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -88,7 +88,7 @@ if ($usr_status == 2) {
 
 
                                 <div class="dropdown-menu" style="left: auto" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item">Secretary</a>
+                                    <a class="dropdown-item">Admin</a>
                                     <hr color="black">
                                     <a href="/parmas/connection/logout.php" class="dropdown-item" type="submit">Log Out</a>
                                 </div>
@@ -97,17 +97,27 @@ if ($usr_status == 2) {
                     </nav>
                     <div class="container-fluid">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800  fw-bolder">Offering Details</h1>
+                            <h1 class="h3 mb-0 text-gray-800  fw-bolder">Death Relief Fund</h1>
 
                         </div>
                         <div class="row">
                             <div class="col-lg-12 mb-4">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Offerings</h6>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <h6 class="m-0 font-weight-bold text-primary">View Details</h6>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="drf_payments.php" class="btn btn-primary"><i class="bi bi-credit-card-fill"></i> View Payments</a>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="drf_users_pdf.php" target="_blank" class="btn btn-primary"><i class="bi bi-printer"></i> Print Full Details</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="card-body">
-                                        <input type="text" value="<?= date("j-n-Y") ?>" class="form-control" autocomplete="off" placeholder="Select Date" name="datepicker" id="datepicker" onchange="dateSort_offer_details()">
+                                        <input type="text" class="form-control" autocomplete="off" placeholder="Search" id="search" onkeyup="dateSort_offer_details()">
                                         <div id="result"></div>
                                     </div>
                                 </div>
@@ -139,18 +149,17 @@ if ($usr_status == 2) {
 }
 ?>
 <script>
-    $(document).ready(function() {
-        dateSort_offer_details();
-    })
-
     function dateSort_offer_details() {
-        var datepicker = $('#datepicker').datepicker('getDate')
-        var year = datepicker.getDate() + "-" + (datepicker.getMonth() + 1) + "-" + datepicker.getFullYear();
+
+        var search = $("#search").val()
+        if(search==null){
+            search =" "
+        }
         $.ajax({
-            url: "dateSort_offer_details.php",
+            url: "sort_drf.php",
             method: "post",
             data: {
-                year: year
+                search: search
             },
             success: function(data) {
                 $('#result').html(data);
@@ -158,11 +167,6 @@ if ($usr_status == 2) {
         });
     }
 </script>
-<script>
-    $("#datepicker").datepicker({
-        dateFormat: "d-m-yy",
-        minDate: 0,
-    });
-</script>
+
 
 </html>

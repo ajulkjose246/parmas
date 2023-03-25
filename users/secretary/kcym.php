@@ -26,13 +26,12 @@ if ($usr_status == 2) {
 
     <body id="page-top">
         <div id="wrapper">
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <!-- <i class="fas fa-laugh-wink"></i> -->
                     </div>
-                    <div class="sidebar-brand-text mx-3"><img src="/parmas/assets/img/logo.png" style="width: 78px;"> PARMAS
-                    </div>
+                    <div class="sidebar-brand-text mx-3"><img src="/parmas/assets/img/logo.png" style="width: 78px;"> PARMAS</div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item active">
@@ -64,6 +63,11 @@ if ($usr_status == 2) {
                     <a class="nav-link" href="offering_details.php">
                         <i class="fa-solid fa-users"></i>
                         <span>Offering Details</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="view_drf_details.php">
+                        <i class="fa-solid fa-users"></i>
+                        <span>View Death Relief Fund</span></a>
                 </li>
                 <hr class="sidebar-divider d-none d-md-block">
             </ul>
