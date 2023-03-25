@@ -82,7 +82,7 @@ if ($usr_status == 2) {
 
 
                                 <div class="dropdown-menu" style="left: auto" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item">Admin</a>
+                                    <a class="dropdown-item">Secretary</a>
                                     <hr color="black">
                                     <a href="/parmas/connection/logout.php" class="dropdown-item" type="submit">Log Out</a>
                                 </div>
