@@ -90,11 +90,11 @@ if ($usr_status == 1) {
                                 <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                         <div class="row">
-                                            <div class="col-8">
+                                            <div class="col-9">
                                                 <h6 class="m-0 font-weight-bold text-primary">Payment Details</h6>
                                             </div>
-                                            <div class="col-2">
-                                                <a href="drf_users_pdf.php" target="_blank" class="btn btn-primary"><i class="bi bi-printer"></i> Print Full Details</a>
+                                            <div class="col-3">
+                                                <a href="drf_payment_pdf.php" target="_blank" class="btn btn-primary"><i class="bi bi-printer"></i> Print Payment Details</a>
                                             </div>
                                         </div>
                                     </div>
