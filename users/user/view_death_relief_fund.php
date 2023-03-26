@@ -92,7 +92,7 @@ $uid = $_SESSION['user']['usr_id'];
       success: function(result) {
         console.log(result)
         var options = {
-          key: "rzp_test_UY1y7bu0apmIK4",
+          key: "rzp_test_SthGTyf8ZmVrIZ",
           amount: amt * 100,
           currency: "INR",
           name: "PARMAS",

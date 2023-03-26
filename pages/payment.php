@@ -105,7 +105,7 @@ if ($usr_id == null) {
           data: "amt=" + amt + "&name=" + name + "&usr_id=" + uid + "&payDate=" + datepicker,
           success: function(result) {
             var options = {
-              key: "rzp_test_UY1y7bu0apmIK4",
+              key: "rzp_test_SthGTyf8ZmVrIZ",
               amount: amt * 100,
               currency: "INR",
               name: "PARMAS",
