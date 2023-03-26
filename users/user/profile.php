@@ -79,6 +79,16 @@ $row = mysqli_fetch_array($result);
                 </div>
             </div>
             <div class="col-md-9">
+                <?php
+                $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `usr_id` =$user_id AND `status` = 0");
+                $num=mysqli_num_rows($result);
+                if ($num>0) { ?>
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Warning!</strong> After validating the marriage registration, we will notify you.
+                    </div>
+                <?php }
+                ?>
                 <div class="profile-content">
                     <div class="col-xxl-12 mb-5 mb-xxl-0">
                         <div class="row">
@@ -184,5 +194,6 @@ $row = mysqli_fetch_array($result);
 </body>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
 
 </html>
