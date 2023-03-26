@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+$_SESSION['location']="/parmas/users/admin/marriageRegisterRequest.php";
 require("../../connection/db_connect.php");
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
@@ -21,7 +22,6 @@ if ($usr_status == 1) {
         <link rel="stylesheet" href="/parmas/assets/css/cdn/bootstrap.min.css">
         <link rel="stylesheet" href="/parmas/assets/css/cdn/sb-admin-2.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-
     </head>
 
     <body id="page-top">
@@ -86,47 +86,55 @@ if ($usr_status == 1) {
                     </nav>
                     <div class="container-fluid">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800 fw-bolder">Administration</h1>
+                            <h1 class="h3 mb-0 text-gray-800  fw-bolder">Marriage Registrations Requests</h1>
 
                         </div>
                         <div class="row">
-
-
                             <div class="col-lg-12 mb-4">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Select Secretary</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" name="search_text" id="search_text" placeholder="Search" class="form-control" />
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h6 class="m-0 font-weight-bold text-primary">View Details</h6>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div id="result"></div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-12 mb-4">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Administration Members</h6>
+                                        </div>
                                     </div>
                                     <div class="card-body">
-                                        <select id="kcym_year" onchange="administration_sort_year()" class="form-control">
-                                            <option value="2023">2023</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2020">2020</option>
-                                        </select>
-                                        <div id="administration_memb"></div>
+                                        <table style="width: 100%;border-collapse:separate;border-spacing:0 15px;">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Groom Name</th>
+                                                <th>Groom Parish</th>
+                                                <th>Groom Surname</th>
+                                                <th>Bride Name</th>
+                                                <th>Bride Parish</th>
+                                                <th>Bride Surname</th>
+                                                <th>Full Details</th>
+                                                <th colspan="2">Action</th>
+                                            </tr>
+                                            <?php
+                                            $i = 0;
+                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =0");
+                                            while ($row = mysqli_fetch_array($result)) {
+                                                $i = $i + 1;
+                                            ?>
+                                                <tr>
+                                                    <td><?= $i ?></td>
+                                                    <td><?= $row['GroomName'] ?></td>
+                                                    <td><?= $row['GroomParish'] ?></td>
+                                                    <td><?= $row['GroomSurname'] ?></td>
+                                                    <td><?= $row['BrideName'] ?></td>
+                                                    <td><?= $row['BrideParish'] ?></td>
+                                                    <td><?= $row['BrideSurname'] ?></td>
+                                                    <td><a href="ViewUserMarriageRegister.php?id=<?=$row['id']?>" style="text-decoration: none;">View</a></td>
+                                                    <td><a href="#" onclick="maReRej(<?= $row['id'] ?>)"><i class="fa-solid fa-xmark"></i></a></td>
+                                                    <td><a href="#" onclick="maReApp(<?= $row['id'] ?>)"><i class="fa-solid fa-check"></i></a></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </table>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -140,87 +148,45 @@ if ($usr_status == 1) {
                 </footer>
             </div>
         </div>
+        <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
+        <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
+        <script src="/parmas/assets/js/cdn/sb-admin-2.min.js"></script>
+        <script src="/parmas/assets/js/cdn/popper.min.js"></script>
+        <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
+        <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
     </body>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/js/sb-admin-2.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script> -->
-
-    <script src="/parmas/assets/js/cdn/jquery.min.js"></script>
-    <script src="/parmas/assets/js/cdn/bootstrap.bundle.min.js"></script>
-    <script src="/parmas/assets/js/cdn/sb-admin-2.min.js"></script>
-    <script src="/parmas/assets/js/cdn/popper.min.js"></script>
-    <script src="/parmas/assets/js/cdn/bootstrap.min.js"></script>
-    <script src="/parmas/assets/js/cdn/baguetteBox.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#search_text').keyup(function() {
-                var search = $(this).val();
-                if (search != '') {
-                    load_data(search);
-                } else {
-                    load_data();
-                }
-            });
-
-            function load_data(query) {
-                $.ajax({
-                    url: "fetch.php",
-                    method: "post",
-                    data: {
-                        query: query
-                    },
-                    success: function(data) {
-                        $('#result').html(data);
-                    }
-                });
-            }
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            administration_sort_year();
-        })
-
-        function administration_sort_year() {
-            var year = $('#kcym_year').find(":selected").val();
-            $.ajax({
-                url: "administration_sort_year.php",
-                method: "post",
-                data: {
-                    year: year
-                },
-                success: function(data) {
-                    $('#administration_memb').html(data);
-                }
-            });
-        }
-    </script>
 <?php
-    if (isset($_POST['subBtn'])) {
-        $name = $_POST['usr_name'];
-        $position = $_POST['position'];
-        $date = $_POST['date'];
-        $profile = $_FILES['profile']['name'];
-        if ($name != null && $position != null && $profile != null) {
-            $sql = "INSERT INTO `tbl_administration`(`usr_name`, `usr_position`,`usr_date`, `usr_profile`) VALUES ('$name','$position','$date','$profile')";
-            mysqli_query($con, $sql);
-            $sql = "UPDATE `tbl_administration_position` SET `pos_status`=1 WHERE pos_id = '$position'";
-            mysqli_query($con, $sql);
-            $targetdir = "../../assets/img/administration/";
-            $file_path = $targetdir . basename($profile);
-            move_uploaded_file($_FILES['profile']['tmp_name'], $file_path);
-            $yourURL = "administration.php";
-            echo ("<script>location.href='$yourURL'</script>");
-        }
-    }
 } else {
     $yourURL = "/parmas/index.php";
     echo ("<script>location.href='$yourURL'</script>");
 }
 ?>
+<script>
+    function maReApp(id) {
+        $.ajax({
+            url: "marriageRegisterRequestApp.php",
+            method: "post",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                location.href='/parmas/users/admin/marriageRegisterRequest.php';
+            }
+        });
+    }
 
+    function maReRej(id) {
+        $.ajax({
+            url: "marriageRegisterRequestRej.php",
+            method: "post",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                location.href='/parmas/users/admin/marriageRegisterRequest.php';
+            }
+        });
+    }
+</script>
 
 </html>
