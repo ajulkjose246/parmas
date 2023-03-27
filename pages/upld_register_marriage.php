@@ -16,7 +16,7 @@
                 <h6 class="text-center">(Automatically redirect the page)</h6>
             </div>
             <div class="modal-footer">
-                <a href="/parmas/index.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
+                <a href="/parmas/pages/register_marriage_p2.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
             </div>
         </div>
     </div>
@@ -56,8 +56,8 @@ if (isset($_POST['GroomDiocese']) && isset($_POST['BrideDiocese']) && isset($_PO
     $adDate = $_POST['adDate'];
     $MarriageDate = $_POST['MarriageDate'];
 
-    $sql = "INSERT INTO `tbl_marriage_kuri_a`(`usr_id`, `GroomDiocese`, `GroomParish`, `GroomSurname`, `GroomName`, `GroomFather`, `GroomMother`, `Groomdob`, `GroomBaptismDate`, `GroomRemark`, `BrideDiocese`, `BrideParish`, `BrideSurname`, `BrideName`, `BrideFather`, `BrideMother`, `Bridedob`, `BrideBaptismDate`, `BrideRemark`, `MarriageProposalDate`, `adDate`, `MarriageDate`)
-     VALUES ('$uid','$GroomDiocese','$GroomParish','$GroomSurname','$GroomName','$GroomFather','$GroomMother','$Groomdob','$GroomBaptismDate','$GroomRemark','$BrideDiocese','$BrideParish','$BrideSurname','$BrideName','$BrideFather','$BrideMother','$Bridedob','$BrideBaptismDate','$BrideRemark','$MarriageProposalDate','$adDate','$MarriageDate')";
+    $sql = "INSERT INTO `tbl_marriage_kuri_a`(`usr_id`, `GroomDiocese`, `GroomParish`, `GroomSurname`, `GroomName`, `GroomFather`, `GroomMother`, `Groomdob`, `GroomBaptismDate`, `GroomRemark`, `BrideDiocese`, `BrideParish`, `BrideSurname`, `BrideName`, `BrideFather`, `BrideMother`, `Bridedob`, `BrideBaptismDate`, `BrideRemark`, `MarriageProposalDate`, `adDate`, `MarriageDate`,`progress`)
+     VALUES ('$uid','$GroomDiocese','$GroomParish','$GroomSurname','$GroomName','$GroomFather','$GroomMother','$Groomdob','$GroomBaptismDate','$GroomRemark','$BrideDiocese','$BrideParish','$BrideSurname','$BrideName','$BrideFather','$BrideMother','$Bridedob','$BrideBaptismDate','$BrideRemark','$MarriageProposalDate','$adDate','$MarriageDate',25)";
     $result = mysqli_query($con, $sql);
     if ($result) {
         echo ("<script>document.getElementById('succesBtn').click()</script>");

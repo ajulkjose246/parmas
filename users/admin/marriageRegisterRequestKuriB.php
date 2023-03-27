@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 session_start();
+$_SESSION['location']="/parmas/users/admin/marriageRegisterRequest.php";
 require("../../connection/db_connect.php");
-$_SESSION['location'] = "/parmas/users/admin/marriageRegister.php";
 $usr_status = $_SESSION['user']['usr_status'];
 if ($usr_status == 1) {
 ?>
@@ -86,8 +86,7 @@ if ($usr_status == 1) {
                     </nav>
                     <div class="container-fluid">
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800  fw-bolder">Marriage Registrations</h1>
-
+                            <h1 class="h3 mb-0 text-gray-800  fw-bolder">Marriage Registrations Requests</h1>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 mb-4">
@@ -95,66 +94,10 @@ if ($usr_status == 1) {
                                     <div class="card-header py-3">
                                         <div class="row">
                                             <div class="col-10">
-                                                <h6 class="m-0 font-weight-bold text-primary">View Kuri A Details</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">View Details</h6>
                                             </div>
                                             <div class="col-2">
-                                                <?php
-                                                $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =0");
-                                                $num = mysqli_num_rows($result)
-                                                ?>
-                                                <a href="marriageRegisterRequest.php" class="btn btn-primary"> Requests <span class="badge text-bg-secondary"><?= $num ?></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <table style="width: 100%;border-collapse:separate;border-spacing:0 15px;">
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Groom Name</th>
-                                                <th>Groom Parish</th>
-                                                <th>Groom Surname</th>
-                                                <th>Bride Name</th>
-                                                <th>Bride Parish</th>
-                                                <th>Bride Surname</th>
-                                                <th>Full Details</th>
-                                            </tr>
-                                            <?php
-                                            $i = 0;
-                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =1");
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                $i = $i + 1;
-                                            ?>
-                                                <tr>
-                                                    <td><?= $i ?></td>
-                                                    <td><?= $row['GroomName'] ?></td>
-                                                    <td><?= $row['GroomParish'] ?></td>
-                                                    <td><?= $row['GroomSurname'] ?></td>
-                                                    <td><?= $row['BrideName'] ?></td>
-                                                    <td><?= $row['BrideParish'] ?></td>
-                                                    <td><?= $row['BrideSurname'] ?></td>
-                                                    <td><a href="ViewUserMarriageRegister.php?id=<?= $row['id'] ?>" style="text-decoration: none;">View</a></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 mb-4">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <div class="row">
-                                            <div class="col-10">
-                                                <h6 class="m-0 font-weight-bold text-primary">View Kuri B Details</h6>
-                                            </div>
-                                            <div class="col-2">
-                                                <?php
-                                                $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` =50");
-                                                $num = mysqli_num_rows($result)
-                                                ?>
-                                                <a href="marriageRegisterRequestKuriB.php" class="btn btn-primary"> Requests <span class="badge text-bg-secondary"><?= $num ?></span></a>
+                                                <a href="/parmas/users/admin/marriageRegister.php" class="btn btn-primary"> Back</a>
                                             </div>
                                         </div>
                                     </div>
@@ -170,10 +113,11 @@ if ($usr_status == 1) {
                                                 <th>Bride Surname</th>
                                                 <th>Kuri B</th>
                                                 <th>Full Details</th>
+                                                <th colspan="2">Action</th>
                                             </tr>
                                             <?php
                                             $i = 0;
-                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` =75");
+                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` =50");
                                             while ($row = mysqli_fetch_array($result)) {
                                                 $i = $i + 1;
                                             ?>
@@ -186,7 +130,9 @@ if ($usr_status == 1) {
                                                     <td><?= $row['BrideParish'] ?></td>
                                                     <td><?= $row['BrideSurname'] ?></td>
                                                     <td><a href="../../assets/certificates/Marriage/<?= $row['marrKuriBFile'] ?>" target="_blank" style="text-decoration: none;">View</a></td>
-                                                    <td><a href="ViewUserMarriageRegister.php?id=<?= $row['id'] ?>" style="text-decoration: none;">View</a></td>
+                                                    <td><a href="ViewUserMarriageRegister.php?id=<?=$row['id']?>" style="text-decoration: none;">View</a></td>
+                                                    <td><a href="#" onclick="maReRej(<?= $row['id'] ?>)"><i class="fa-solid fa-xmark"></i></a></td>
+                                                    <td><a href="#" onclick="maReApp(<?= $row['id'] ?>)"><i class="fa-solid fa-check"></i></a></td>
                                                 </tr>
                                             <?php } ?>
                                         </table>
@@ -194,7 +140,6 @@ if ($usr_status == 1) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <footer class="sticky-footer bg-white">
@@ -219,5 +164,32 @@ if ($usr_status == 1) {
     echo ("<script>location.href='$yourURL'</script>");
 }
 ?>
+<script>
+    function maReApp(id) {
+        $.ajax({
+            url: "marriageRegisterRequestKuriBApp.php",
+            method: "post",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                location.href='/parmas/users/admin/marriageRegisterRequestKuriB.php';
+            }
+        });
+    }
+
+    function maReRej(id) {
+        $.ajax({
+            url: "marriageRegisterRequestKuriBRej.php",
+            method: "post",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                location.href='/parmas/users/admin/marriageRegisterRequestKuriB.php';
+            }
+        });
+    }
+</script>
 
 </html>

@@ -38,6 +38,6 @@
         setTimeout(
             function() {
                 location.href = page
-            }, 1500);
+            }, 3500);
     }
 </script>

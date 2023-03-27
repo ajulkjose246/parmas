@@ -5,7 +5,11 @@ session_start();
 error_reporting(E_ERROR | E_PARSE);
 require("../connection/db_connect.php");
 $uid = $_SESSION['user']['usr_id'];
-
+$result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `usr_id` = $uid AND `progress` =25");
+$num = mysqli_num_rows($result);
+if ($num > 0) {
+    echo ("<script>location.href='/parmas/pages/register_marriage_p2.php'</script>");
+}
 ?>
 
 <head>
@@ -27,6 +31,12 @@ $uid = $_SESSION['user']['usr_id'];
                 <div class="row d-flex justify-content-center">
                     <div class="col-11 ">
                         <div class="card">
+                            <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/parmas/index.php">Home</a></li>

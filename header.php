@@ -74,7 +74,7 @@ if ($usr_status == 1) {
                                 <li><a class="dropdown-item" href="/parmas/pages/death_relief_fund.php">Apply Death Relief Fund</a></li>
                             <?php  }
                             ?>
-                            <li><a class="dropdown-item" href="/parmas/pages/register_marriage.php">Register Marriage</a></li>
+                            <li><a class="dropdown-item" href="/parmas/pages/register_marriage_p1.php">Register Marriage</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/parmas/pages/contact.php">Contact Us</a></li>
