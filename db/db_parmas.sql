@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 03:03 PM
+-- Generation Time: Mar 26, 2023 at 07:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -171,7 +171,8 @@ CREATE TABLE `tbl_drf_payments` (
 
 INSERT INTO `tbl_drf_payments` (`drf_id`, `drf_user_id`, `drf_amount`, `onCreate`, `onUpdate`) VALUES
 (1, 26, '600', '2023-03-23 13:36:46', '2023-03-23 13:36:46'),
-(2, 26, '700', '2023-03-23 13:42:48', '2023-03-23 13:42:48');
+(2, 26, '700', '2022-03-23 13:42:48', '2023-03-24 13:19:59'),
+(3, 26, '3333', '2023-03-26 10:32:53', '2023-03-26 10:32:53');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,8 @@ CREATE TABLE `tbl_family_members` (
 
 INSERT INTO `tbl_family_members` (`fam_id`, `user_id`, `fam_name`, `fam_dob`, `fam_gender`, `fam_relationship`, `onCreated`, `onUpdate`) VALUES
 (54, 26, 'Amal K Jose', '1995-03-24', 'Male', 'Brother', '2023-03-13 05:51:27', '2023-03-13 05:51:27'),
-(55, 26, 'Athul K Jose', '2000-01-28', 'Male', 'Brother', '2023-03-13 05:52:06', '2023-03-13 05:52:06');
+(55, 26, 'Athul K Jose', '2000-01-28', 'Male', 'Brother', '2023-03-13 05:52:06', '2023-03-13 05:52:06'),
+(56, 26, 'AKH', '2023-03-15', 'Male', 'Brother', '2023-03-26 15:03:31', '2023-03-26 15:03:31');
 
 -- --------------------------------------------------------
 
@@ -335,6 +337,49 @@ INSERT INTO `tbl_login` (`log_id`, `usr_id`, `usr_email`, `usr_password`, `reset
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_marriage_kuri_a`
+--
+
+CREATE TABLE `tbl_marriage_kuri_a` (
+  `id` int(11) NOT NULL,
+  `usr_id` int(11) NOT NULL,
+  `GroomDiocese` varchar(100) NOT NULL,
+  `GroomParish` varchar(100) NOT NULL,
+  `GroomSurname` varchar(100) NOT NULL,
+  `GroomName` varchar(100) NOT NULL,
+  `GroomFather` varchar(100) NOT NULL,
+  `GroomMother` varchar(100) NOT NULL,
+  `Groomdob` varchar(100) NOT NULL,
+  `GroomBaptismDate` varchar(100) NOT NULL,
+  `GroomRemark` varchar(300) NOT NULL,
+  `BrideDiocese` varchar(100) NOT NULL,
+  `BrideParish` varchar(100) NOT NULL,
+  `BrideSurname` varchar(100) NOT NULL,
+  `BrideName` varchar(100) NOT NULL,
+  `BrideFather` varchar(100) NOT NULL,
+  `BrideMother` varchar(100) NOT NULL,
+  `Bridedob` varchar(100) NOT NULL,
+  `BrideBaptismDate` varchar(100) NOT NULL,
+  `BrideRemark` varchar(300) NOT NULL,
+  `MarriageProposalDate` varchar(100) NOT NULL,
+  `adDate` varchar(100) NOT NULL,
+  `MarriageDate` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `onCreate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `onUpdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_marriage_kuri_a`
+--
+
+INSERT INTO `tbl_marriage_kuri_a` (`id`, `usr_id`, `GroomDiocese`, `GroomParish`, `GroomSurname`, `GroomName`, `GroomFather`, `GroomMother`, `Groomdob`, `GroomBaptismDate`, `GroomRemark`, `BrideDiocese`, `BrideParish`, `BrideSurname`, `BrideName`, `BrideFather`, `BrideMother`, `Bridedob`, `BrideBaptismDate`, `BrideRemark`, `MarriageProposalDate`, `adDate`, `MarriageDate`, `status`, `onCreate`, `onUpdate`) VALUES
+(1, 26, 'Thamarasheri', 'Adakkakundu', 'Kallarackal', 'Ajul K Jose', 'K K Jose', 'Ancy Jose', '2023-03-08', '2023-03-24', 'veruthe', 'Abc', 'Abc', 'abc', 'abc', 'abc', 'abc', '2023-03-02', '2023-03-24', 'abc', '2023-03-16', '2023-03-24', '2023-03-21', 1, '2023-03-26 12:03:58', '2023-03-26 15:00:32'),
+(5, 26, 'uuhuh', 'uhuhuhu', 'huhuhuh', 'uhuhuh', 'uhuhuh', 'uhuhuhu', '7777-07-07', '7777-07-07', 'uhuhuu', 'uuhuhu', 'uhuhuhu', 'uhhhbh', 'bhbhbhb', 'hbhbhb', 'hbhbhb', '7777-07-07', '7777-07-07', 'hhbhh', '7777-07-07', '7777-07-07', '7777-07-07', 1, '2023-03-26 14:46:54', '2023-03-26 15:01:20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_offering`
 --
 
@@ -384,7 +429,17 @@ INSERT INTO `tbl_payment` (`id`, `amount`, `payment_status`, `payment_id`, `paym
 (104, 150, 'Success', 'pay_LRkBOcTThnLTP7', '1-4-2023', 26, 1),
 (105, 150, 'Success', 'pay_LRkPBEVoYj92T6', '22-3-2023', 27, 1),
 (156, 600, 'Success', 'pay_LUz6G35h7DGfag', '23-3-2023', 26, 0),
-(158, 700, 'Success', 'pay_LUzCdzPafKnnJL', '23-3-2023', 26, 0);
+(158, 700, 'Success', 'pay_LUzCdzPafKnnJL', '23-3-2023', 26, 0),
+(159, 150, 'Success', 'pay_LW66r6OoAqxkps', '26-3-2023', 26, 1),
+(160, 150, 'Pending', '', '26-3-2023', 26, 1),
+(161, 150, 'Pending', '', '26-3-2023', 26, 1),
+(162, 3333, 'Pending', '', '26-3-2023', 26, 0),
+(163, 3333, 'Success', 'pay_LW7ZJuRiuh9PUr', '26-3-2023', 26, 0),
+(164, 150, 'Pending', '', '26-3-2023', 26, 1),
+(165, 150, 'Pending', '', '26-3-2023', 26, 1),
+(166, 150, 'Pending', '', '26-3-2023', 26, 1),
+(167, 150, 'Pending', '', '26-3-2023', 26, 1),
+(168, 150, 'Pending', '', '26-3-2023', 26, 1);
 
 -- --------------------------------------------------------
 
@@ -443,7 +498,8 @@ CREATE TABLE `tbl_user_offering` (
 INSERT INTO `tbl_user_offering` (`id`, `usr_id`, `usr_email`, `usr_intentions`, `offer_id`, `offer_date`) VALUES
 (3, 26, 'ajulkjose2025@mca.ajce.in', 'Test', 1, '16-3-2023'),
 (4, 26, 'ajulkjose2025@mca.ajce.in', 'Test', 1, '1-4-2023'),
-(5, 27, 'sonaannajoseph@gmail.com', 'Test', 1, '22-3-2023');
+(5, 27, 'sonaannajoseph@gmail.com', 'Test', 1, '22-3-2023'),
+(6, 26, 'ajulkjose2025@mca.ajce.in', 'test', 1, '26-3-2023');
 
 --
 -- Indexes for dumped tables
@@ -522,6 +578,12 @@ ALTER TABLE `tbl_login`
   ADD PRIMARY KEY (`log_id`);
 
 --
+-- Indexes for table `tbl_marriage_kuri_a`
+--
+ALTER TABLE `tbl_marriage_kuri_a`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_offering`
 --
 ALTER TABLE `tbl_offering`
@@ -583,13 +645,13 @@ ALTER TABLE `tbl_drf_family_members`
 -- AUTO_INCREMENT for table `tbl_drf_payments`
 --
 ALTER TABLE `tbl_drf_payments`
-  MODIFY `drf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `drf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_family_members`
 --
 ALTER TABLE `tbl_family_members`
-  MODIFY `fam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `fam_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `tbl_family_unit`
@@ -622,6 +684,12 @@ ALTER TABLE `tbl_login`
   MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
+-- AUTO_INCREMENT for table `tbl_marriage_kuri_a`
+--
+ALTER TABLE `tbl_marriage_kuri_a`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_offering`
 --
 ALTER TABLE `tbl_offering`
@@ -631,7 +699,7 @@ ALTER TABLE `tbl_offering`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT for table `tbl_register`
@@ -643,7 +711,7 @@ ALTER TABLE `tbl_register`
 -- AUTO_INCREMENT for table `tbl_user_offering`
 --
 ALTER TABLE `tbl_user_offering`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

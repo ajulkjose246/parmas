@@ -18,8 +18,8 @@ if ($result) {
         $i = 0;
         while ($row = mysqli_fetch_array($result)) {
             $uid = $row['drf_user_id'];
-            $result = mysqli_query($con, "SELECT * FROM `tbl_register` WHERE `usr_id` =$uid");
-            $row1 = mysqli_fetch_array($result);
+            $result1 = mysqli_query($con, "SELECT * FROM `tbl_register` WHERE `usr_id` =$uid");
+            $row1 = mysqli_fetch_array($result1);
             $i = $i + 1;
         ?>
             <tr>

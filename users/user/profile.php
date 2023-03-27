@@ -68,6 +68,11 @@ $row = mysqli_fetch_array($result);
                                     Family Members</a>
                             </li>
                             <li>
+                                <a href="marrCerificate.php">
+                                    <i class="glyphicon glyphicon-certificate"></i>
+                                    Marriage Certificates</a>
+                            </li>
+                            <li>
                                 <a href="privacy.php">
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Privacy</a>

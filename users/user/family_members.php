@@ -2,13 +2,13 @@
 <html lang="en">
 <?php
 session_start();
+error_reporting(E_ERROR | E_PARSE);
 $fam_members_count = $_COOKIE['fam_members_count'];
 for ($i = 2; $i <= $fam_members_count; $i++) {
     echo ("<script>document.cookie = 'fam_members' + $i + '=0';</script>");
     echo ("<script>document.cookie = 'fam_members_count=0';</script>");
     echo ("<script>fam_memb = 1;</script>");
 }
-// error_reporting(E_ERROR | E_PARSE);
 
 require("../../connection/db_connect.php");
 $user = $_SESSION['user'];
@@ -74,6 +74,7 @@ $user_id = $user['usr_id'];
                                     <i class="glyphicon glyphicon-cog"></i>
                                     Privacy</a>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>
