@@ -99,7 +99,7 @@ if ($usr_status == 1) {
                                             </div>
                                             <div class="col-2">
                                                 <?php
-                                                $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =0");
+                                                $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` =25");
                                                 $num = mysqli_num_rows($result)
                                                 ?>
                                                 <a href="marriageRegisterRequest.php" class="btn btn-primary"> Requests <span class="badge text-bg-secondary"><?= $num ?></span></a>
@@ -120,7 +120,7 @@ if ($usr_status == 1) {
                                             </tr>
                                             <?php
                                             $i = 0;
-                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =1");
+                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` between 35 and 100");
                                             while ($row = mysqli_fetch_array($result)) {
                                                 $i = $i + 1;
                                             ?>
@@ -173,7 +173,7 @@ if ($usr_status == 1) {
                                             </tr>
                                             <?php
                                             $i = 0;
-                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` =75");
+                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress` between 75 and 100");
                                             while ($row = mysqli_fetch_array($result)) {
                                                 $i = $i + 1;
                                             ?>

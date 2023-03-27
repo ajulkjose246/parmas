@@ -7,9 +7,11 @@ require("../connection/db_connect.php");
 $uid = $_SESSION['user']['usr_id'];
 $result=mysqli_query($con,"SELECT * FROM `tbl_marriage_kuri_a` WHERE `usr_id` = $uid");
 $row=mysqli_fetch_array($result);
-$progress=$row['progress']
+$progress=$row['progress'];
+if($progress==75){
+    echo ("<script>location.href='/parmas/pages/register_marriage_p3.php'</script>");
+}
 ?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

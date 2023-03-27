@@ -116,7 +116,7 @@ if ($usr_status == 1) {
                                             </tr>
                                             <?php
                                             $i = 0;
-                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `status` =0");
+                                            $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `progress`='25'");
                                             while ($row = mysqli_fetch_array($result)) {
                                                 $i = $i + 1;
                                             ?>

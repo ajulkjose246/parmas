@@ -16,7 +16,7 @@
                 <h6 class="text-center">(Automatically redirect the page)</h6>
             </div>
             <div class="modal-footer">
-                <a href="/parmas/pages/register_marriage_p2.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
+                <a href="/parmas/pages/register_marriage_p1.php" id="clsBtn" class="btn btn-secondary" style="display: none;">Close</a>
             </div>
         </div>
     </div>
