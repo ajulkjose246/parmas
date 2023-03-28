@@ -59,7 +59,7 @@ if ($progress == 75) {
                                         <label class="col-sm-9 col-form-label fw-bold">Download Marriage Register Kuri C (The original document will be collected from the parish)</label>
                                         <div class="col-sm-3">
                                             <div class="d-grid gap-2 col-3 mx-auto">
-                                                <a href="../users/user/marrKuriA.php" target="_blank" class="btn btn-primary">Download</a>
+                                                <a href="../users/user/marrKuriC.php" target="_blank" class="btn btn-primary">Download</a>
                                             </div>
                                         </div>
                                     </div>

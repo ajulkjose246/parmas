@@ -56,7 +56,7 @@ if ($usr_status == 1) {
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="view_drf_details.php">
-                        <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-ring"></i>
                         <span>View Death Relief Fund</span></a>
                 </li>
                 <hr class="sidebar-divider d-none d-md-block">

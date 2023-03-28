@@ -55,7 +55,7 @@ $html = '<html>
             <div class="dandt">Date :' . date("d/m/Y") . '</div>
             <div class="dandt">Time :' . date("h:i:s A") . '</div>
         </div>
-        <h2 class="heading">Marriage Register Kuri A</h2>
+        <h2 class="heading">Marriage Register Kuri C</h2>
         <h3 class="heading">St. George Church, Adakkakundu</h3>
             <div class="row">
                 <div class="col">

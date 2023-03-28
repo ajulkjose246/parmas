@@ -3,12 +3,12 @@
 <?php
 session_start();
 require("../../connection/db_connect.php");
-$previousUrl=$_SESSION['location'];
+$previousUrl = $_SESSION['location'];
 $usr_status = $_SESSION['user']['usr_status'];
-$mRid=$_GET['id'];
+$mRid = $_GET['id'];
 if ($usr_status == 1) {
-    $result=mysqli_query($con,"SELECT * FROM `tbl_marriage_kuri_a` WHERE `id` =$mRid");
-    $row=mysqli_fetch_array($result);
+    $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `id` =$mRid");
+    $row = mysqli_fetch_array($result);
 ?>
 
     <head>
@@ -64,7 +64,7 @@ if ($usr_status == 1) {
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="marriageRegister.php">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-ring"></i>
                         <span>Marriage Registrations</span></a>
                 </li>
                 <hr class="sidebar-divider d-none d-md-block">
@@ -98,10 +98,10 @@ if ($usr_status == 1) {
                                     <div class="card-header py-3">
                                         <div class="row">
                                             <div class="col-10">
-                                                <h6 class="m-0 font-weight-bold text-primary">View Details of ' <?=$row['GroomName']?> & <?=$row['BrideName']?> '</h6>
+                                                <h6 class="m-0 font-weight-bold text-primary">View Details of ' <?= $row['GroomName'] ?> & <?= $row['BrideName'] ?> '</h6>
                                             </div>
                                             <div class="col-2">
-                                                <a href="<?=$previousUrl?>" class="btn btn-primary"> Back</a>
+                                                <a href="<?= $previousUrl ?>" class="btn btn-primary"> Back</a>
                                             </div>
                                         </div>
                                     </div>
@@ -109,69 +109,69 @@ if ($usr_status == 1) {
                                         <table style="width: 100%;border-collapse:separate;border-spacing:0 15px;">
                                             <tr>
                                                 <th>Groom Diocese </th>
-                                                <td> : <?=$row['GroomDiocese']?></td>
+                                                <td> : <?= $row['GroomDiocese'] ?></td>
                                                 <th>Bride Diocese </th>
-                                                <td> : <?=$row['BrideDiocese']?></td>
+                                                <td> : <?= $row['BrideDiocese'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Parish </th>
-                                                <td> : <?=$row['GroomParish']?></td>
+                                                <td> : <?= $row['GroomParish'] ?></td>
                                                 <th>Bride Parish </th>
-                                                <td> : <?=$row['BrideParish']?></td>
+                                                <td> : <?= $row['BrideParish'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Surname </th>
-                                                <td> : <?=$row['GroomSurname']?></td>
+                                                <td> : <?= $row['GroomSurname'] ?></td>
                                                 <th>Bride Surname </th>
-                                                <td> : <?=$row['BrideSurname']?></td>
+                                                <td> : <?= $row['BrideSurname'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Name </th>
-                                                <td> : <?=$row['GroomName']?></td>
+                                                <td> : <?= $row['GroomName'] ?></td>
                                                 <th>Bride Name </th>
-                                                <td> : <?=$row['BrideName']?></td>
+                                                <td> : <?= $row['BrideName'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Father </th>
-                                                <td> : <?=$row['GroomFather']?></td>
+                                                <td> : <?= $row['GroomFather'] ?></td>
                                                 <th>Bride Father </th>
-                                                <td> : <?=$row['BrideFather']?></td>
+                                                <td> : <?= $row['BrideFather'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Mother </th>
-                                                <td> : <?=$row['GroomMother']?></td>
+                                                <td> : <?= $row['GroomMother'] ?></td>
                                                 <th>Bride Mother </th>
-                                                <td> : <?=$row['BrideMother']?></td>
+                                                <td> : <?= $row['BrideMother'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom DOB </th>
-                                                <td> : <?=$row['Groomdob']?></td>
+                                                <td> : <?= $row['Groomdob'] ?></td>
                                                 <th>Bride DOB </th>
-                                                <td> : <?=$row['Bridedob']?></td>
+                                                <td> : <?= $row['Bridedob'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Baptism Date </th>
-                                                <td> : <?=$row['GroomBaptismDate']?></td>
+                                                <td> : <?= $row['GroomBaptismDate'] ?></td>
                                                 <th>Bride Baptism Date </th>
-                                                <td> : <?=$row['BrideBaptismDate']?></td>
+                                                <td> : <?= $row['BrideBaptismDate'] ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Groom Remark</th>
-                                                <td> : <?=$row['GroomRemark']?></td>
+                                                <td> : <?= $row['GroomRemark'] ?></td>
                                                 <th>Bride Baptism Remark </th>
-                                                <td> : <?=$row['BrideRemark']?></td>
+                                                <td> : <?= $row['BrideRemark'] ?></td>
                                             </tr>
                                             <tr class="text-center">
                                                 <th colspan="2">Marriage Proposal Date </th>
-                                                <td> : <?=$row['MarriageProposalDate']?></td>
+                                                <td> : <?= $row['MarriageProposalDate'] ?></td>
                                             </tr>
                                             <tr class="text-center">
                                                 <th colspan="2">The dates specified for the ad</th>
-                                                <td> : <?=$row['adDate']?></td>
+                                                <td> : <?= $row['adDate'] ?></td>
                                             </tr>
                                             <tr class="text-center">
                                                 <th colspan="2">The date of marriage</th>
-                                                <td> : <?=$row['MarriageDate']?></td>
+                                                <td> : <?= $row['MarriageDate'] ?></td>
                                             </tr>
                                         </table>
                                     </div>

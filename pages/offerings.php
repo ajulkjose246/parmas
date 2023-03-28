@@ -4,7 +4,9 @@ require("../connection/db_connect.php");
 $usr_id = $_SESSION['user']['usr_id']; ?>
 
 <link rel="stylesheet" href="/parmas/assets/css/offerings.css">
-
+<?php
+  include("./loading.php");
+?>
 <section style="background-color: #eee;">
   <div class="text-center container py-5">
     <h1 class="text-center fw-bolder">OFFERINGS</h1>

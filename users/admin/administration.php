@@ -61,7 +61,7 @@ if ($usr_status == 1) {
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="marriageRegister.php">
-                        <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-ring"></i>
                         <span>Marriage Registrations</span></a>
                 </li>
                 <hr class="sidebar-divider d-none d-md-block">

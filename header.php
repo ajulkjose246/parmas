@@ -37,7 +37,6 @@ if ($usr_status == 1) {
     <link rel="stylesheet" href="/parmas/assets/css/cdn/baguetteBox.min.css">
     <link rel="stylesheet" href="/parmas/assets/css/style.css">
 </head>
-
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
