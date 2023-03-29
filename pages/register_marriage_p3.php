@@ -8,7 +8,9 @@ $uid = $_SESSION['user']['usr_id'];
 $result = mysqli_query($con, "SELECT * FROM `tbl_marriage_kuri_a` WHERE `usr_id` = $uid");
 $row = mysqli_fetch_array($result);
 $progress = $row['progress'];
-if ($progress == 75) {
+if ($progress != 75) {
+    echo ("<script>location.href='/parmas/pages/register_marriage_p1.php'</script>");
+}else{
 ?>
 
     <head>

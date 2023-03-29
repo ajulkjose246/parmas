@@ -25,15 +25,17 @@ if ($progress == 0 or $progress == 25) {
         <?php
         if ($uid != null) {
         ?>
+
             <section>
                 <div class="container-fluid mx-auto">
                     <div class="row d-flex justify-content-center">
                         <div class="col-11 ">
                             <div class="card">
-                                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="<?=$progress?>" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?=$progress?>%"></div>
+                                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="<?= $progress ?>" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: <?= $progress ?>%"></div>
                                 </div>
                             </div>
+
                             <div class="card">
 
                                 <nav aria-label="breadcrumb">
@@ -42,168 +44,175 @@ if ($progress == 0 or $progress == 25) {
                                         <li class="breadcrumb-item active" aria-current="page">Register Marriage</li>
                                     </ol>
                                 </nav>
-                                <h3 class="text-center mb-4" style="font-weight: 1000;">താമരശ്ശേരി രൂപത</h3>
-                                <h6 class="text-center mb-4" style="font-weight: 600;">സെന്റ് ജോർജ് ചർച്ച്, അടക്കക്കുണ്ട് </h6>
-                                <h5 class="text-center mb-4" style="font-weight: 600;">വിവാഹപരസ്യക്കുറി</h5>
-                                <hr>
-                                <form class="form-card akjFval" method="POST" action="upld_register_marriage.php">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <h4 class="text-center fw-bolder">വരൻ</h4>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">രൂപത</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="GroomDiocese" id="GroomDiocese" required></input>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">ഇടവക</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="GroomParish" id="GroomParish" required>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Surname" name="GroomSurname" id="GroomSurname" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">പേര്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomName" id="GroomName" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">പിതാവ്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomFather" id="GroomFather" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">മാതാവ്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomMother" id="GroomMother" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
-                                                <input type="date" class="form-control " name="Groomdob" id="Groomdob">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">മാമ്മോദീസ തീയതി</label>
-                                                <input type="date" class="form-control " name="GroomBaptismDate" id="GroomBaptismDate">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">റിമാർക്ക്</label>
-                                                <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Details" name="GroomRemark" id="GroomRemark" rows="2" required></textarea>
-                                            </div>
-                                        </div>
+                                <?php
+                                if ($progress == 25) { ?>
+                                    <div class="alert alert-warning" role="alert">
+                                        <strong>Warning!</strong> After validating the Submited Details, we will notify you.
                                     </div>
+                                <?php } else { ?>
+                                    <h3 class="text-center mb-4" style="font-weight: 1000;">താമരശ്ശേരി രൂപത</h3>
+                                    <h6 class="text-center mb-4" style="font-weight: 600;">സെന്റ് ജോർജ് ചർച്ച്, അടക്കക്കുണ്ട് </h6>
+                                    <h5 class="text-center mb-4" style="font-weight: 600;">വിവാഹപരസ്യക്കുറി</h5>
                                     <hr>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <h4 class="text-center fw-bolder">വധു</h4>
+                                    <form class="form-card akjFval" method="POST" action="upld_register_marriage.php">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <h4 class="text-center fw-bolder">വരൻ</h4>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">രൂപത</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="BrideDiocese" id="BrideDiocese" required></input>
+                                            <div class="col-12 col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">രൂപത</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="GroomDiocese" id="GroomDiocese" required></input>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">ഇടവക</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="GroomParish" id="GroomParish" required>
+                                                </div>
 
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">ഇടവക</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="BrideParish" id="BrideParish" required>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Surname" name="GroomSurname" id="GroomSurname" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">പേര്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomName" id="GroomName" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">പിതാവ്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomFather" id="GroomFather" required>
+                                                </div>
                                             </div>
 
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Surname" name="BrideSurname" id="BrideSurname" required>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">മാതാവ്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="GroomMother" id="GroomMother" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
+                                                    <input type="date" class="form-control " name="Groomdob" id="Groomdob">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">മാമ്മോദീസ തീയതി</label>
+                                                    <input type="date" class="form-control " name="GroomBaptismDate" id="GroomBaptismDate">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">റിമാർക്ക്</label>
+                                                    <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Details" name="GroomRemark" id="GroomRemark" rows="2" required></textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">പേര്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideName" id="BrideName" required>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <h4 class="text-center fw-bolder">വധു</h4>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">പിതാവ്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideFather" id="BrideFather" required>
-                                            </div>
-                                        </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">രൂപത</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="BrideDiocese" id="BrideDiocese" required></input>
 
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">മാതാവ്</label>
-                                                <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideMother" id="BrideMother" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">ഇടവക</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Details" name="BrideParish" id="BrideParish" required>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">വീട്ടുപേര്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Surname" name="BrideSurname" id="BrideSurname" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">പേര്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideName" id="BrideName" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">പിതാവ്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideFather" id="BrideFather" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">മാതാവ്</label>
+                                                    <input type="text" class="form-control akjval" RegExp="^[a-zA-Z ]+$" ErrMsg="Enter a Valid Name" name="BrideMother" id="BrideMother" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
+                                                    <input type="date" class="form-control " name="Bridedob" id="Bridedob">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">മാമ്മോദീസ തീയതി</label>
+                                                    <input type="date" class="form-control " name="BrideBaptismDate" id="BrideBaptismDate">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">റിമാർക്ക്</label>
+                                                    <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Details" name="BrideRemark" id="BrideRemark" rows="2" required></textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">ജനന തീയതി</label>
-                                                <input type="date" class="form-control " name="Bridedob" id="Bridedob">
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">വിവാഹവാഗ്‌ദാനം നടത്തിയ തീയതി</label>
+                                                    <input type="date" class="form-control" name="MarriageProposalDate" id="MarriageProposalDate" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">പരസ്യത്തിന് നിർദ്ദേശിച്ചിരിക്കുന്ന തീയതികൾ </label>
+                                                    <input type="date" class="form-control" name="adDate" id="adDate" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="exampleFormControlInput1" class="form-label">വിവാഹം നടത്തുവാൻ ഉദ്ദേശിക്കുന്ന തീയതി</label>
+                                                    <input type="date" class="form-control" name="MarriageDate" id="MarriageDate" required>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">മാമ്മോദീസ തീയതി</label>
-                                                <input type="date" class="form-control " name="BrideBaptismDate" id="BrideBaptismDate">
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-12 text-center mt-3">
+                                                <input type="submit" name="subBtn" id="subBtn" class="btn btn-primary">
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">റിമാർക്ക്</label>
-                                                <textarea class="form-control akjval" RegExp="^[a-zA-Z 0-9,]+$" ErrMsg="Enter a Valid Details" name="BrideRemark" id="BrideRemark" rows="2" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">വിവാഹവാഗ്‌ദാനം നടത്തിയ തീയതി</label>
-                                                <input type="date" class="form-control" name="MarriageProposalDate" id="MarriageProposalDate" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">പരസ്യത്തിന് നിർദ്ദേശിച്ചിരിക്കുന്ന തീയതികൾ </label>
-                                                <input type="date" class="form-control" name="adDate" id="adDate" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6 col-lg-4">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">വിവാഹം നടത്തുവാൻ ഉദ്ദേശിക്കുന്ന തീയതി</label>
-                                                <input type="date" class="form-control" name="MarriageDate" id="MarriageDate" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-12 text-center mt-3">
-                                            <input type="submit" name="subBtn" id="subBtn" class="btn btn-primary">
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -214,7 +223,7 @@ if ($progress == 0 or $progress == 25) {
             require("../pages/modal.php");
             echo ("<script>modal_message(2,'You dont have permission to view this page Please Login','/parmas/index.php')</script>");
         }
-    }else{
+    } else {
         echo ("<script>location.href='/parmas/pages/register_marriage_p2.php'</script>");
     }
     ?>
