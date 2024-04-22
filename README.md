@@ -8,12 +8,13 @@ PARMAS is a comprehensive parish management system designed to streamline admini
 
 <div style="display: flex; justify-content: space-between;">
 
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180441.png?alt=media&token=6b7f4586-5d32-4226-ae04-8dd36c522172" alt="Home Screen" width="200"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180501.png?alt=media&token=0d39d133-fbfb-419a-847b-2e7959a30f49" alt="Login" width="200"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180510.png?alt=media&token=a436fb36-0f4a-46d8-b59c-21268261b9e0" alt="Register Screen" width="200"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180620.png?alt=media&token=13b6de90-63c4-4ea5-acd8-1964bd8563a8" alt="Admin Screen" width="200"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180700.png?alt=media&token=2af6edca-ada2-4f69-978f-bd3b43f7ac9e" alt="User profile Screen" width="200"/>
-<img src="https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180722.png?alt=media&token=024c450d-68f2-47d9-9b90-2d41de792bbd" alt="Payment gateway Screen" width="200"/>
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180441.png?alt=media&token=6b7f4586-5d32-4226-ae04-8dd36c522172)
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180501.png?alt=media&token=0d39d133-fbfb-419a-847b-2e7959a30f49)
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180510.png?alt=media&token=a436fb36-0f4a-46d8-b59c-21268261b9e0)
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180620.png?alt=media&token=13b6de90-63c4-4ea5-acd8-1964bd8563a8)
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180700.png?alt=media&token=2af6edca-ada2-4f69-978f-bd3b43f7ac9e)
+![Screen Shot](https://firebasestorage.googleapis.com/v0/b/github-files-akj.appspot.com/o/Imgaes%2Fparmas%2FScreenshot%202024-04-22%20180722.png?alt=media&token=024c450d-68f2-47d9-9b90-2d41de792bbd)
+
 
 </div>
 
